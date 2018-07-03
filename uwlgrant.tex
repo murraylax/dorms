@@ -1,0 +1,310 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+
+\setlength{\voffset}{-0.25in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{-0.1in}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.3in}
+\setlength{\textwidth}{6.7in}
+\setlength{\textheight}{9.5in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1.41}
+
+\newcommand{\bi}{
+  \begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{
+  \begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} (\citeyear{#1})}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\toprule}{\par\vspace*{2pt}\noindent{\hrule\hfill}\par\vspace*{1pt}}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\pagestyle{plain}
+
+\begin{document}
+\setcounter{page}{1}
+
+\section{Purpose / Significance of Research}
+\indent The purpose of this research is to explore which factors related to residence life and college student habits lead to successful academic achievement.  More specifically, this research will determine whether living on campus has academic benefits and through what channel these benefits are acquired.  What positive actions are students that live on campus more likely to take or what positive influences come more strongly to students who live on campus that improve academic outcomes?
+
+Many universities believe there are academic benefits to students living in dormitories and consequently require some subset of their student population to live in dormitories.  In this area, Viterbo University, the University of Wisconsin - La Crosse, and the University of Wisconsin - Madison require all freshman students to live in dorms, with few exceptions.\footnote{Typical exceptions include students whose family live near campus are allowed to live at home, and students who are veterans, married, have children, and/or are above a certain age may live off campus.}  To compare the differences between students that live on campus versus off campus, this research focuses on students at Indiana University Purdue University - Indianapolis, a school which does not require students to live on campus and which most students decide to live off campus.
+
+The primary goal of this research is to answer the following three questions:
+\be
+\item How does living on campus influence academic performance as measured by GPA and what is the magnitude of this effect?
+\item How much of this change in GPA is attributed to the increased convenience for students living on campus of university provided resources such as libraries, information technology, tutors, faculty office hours, etc?
+\item How much of this change in GPA is attributed to differences in the interactions and influences of students' peers for students who live on campus versus off campus?
+\ee
+
+Care will be taken to assure the results have clear policy implications.  As discussed in the Methodology section below, this research will employ an instrumental variable regression procedure that will determine not only if living on campus is merely associated with higher academic performance, but if living on campus \textit{causes} students to have higher academic performance.  The importance of using this strategy is that \textit{the results will have clear policy implications}: in the event the results indicate on-campus students perform better, university policy makers can expect that increasing resources dedicated to on-campus housing and/or encouraging incoming students to live on campus will have positive impacts on student learning.
+
+\subsection{Policy Significance}
+Answering these questions becomes particularly important for university policy makers during an economic downturn.  During the latest recession, colleges and universities have experienced decreases in state funding, the value of their endowments, and charitable donations.  This has caused university administrators to make difficult decisions to cut expenses while attempting to not diminish students' abilities to succeed.  These budget cuts often come at the same time as increasing enrollments.  \citee{ds2003} find that during recessions post-secondary enrollments and retention rates actually increase because as unemployment rates increase and salaries decrease, there are fewer and less appealing opportunities outside of college for recent high school graduates.
+
+During these periods of economic hardships universities are faced with increasing demand for housing while having less funding to support it.  Would cutting the supply of on-campus housing, or reducing the services provided in on-campus housing reduce students' academic performance?  Would cutting staff and services while maintaining the same number of available rooms may be detrimental to students' academic achievement?  \citee{sm1994} suggest that benefits deriving from living on campus involve more than simply maintaining residence facilities in close proximity to campus resources.  They argue residence-life administrators have a power and responsibility to create an environment that fosters student learning.  
+
+\subsection{Scholarly Significance / Literature Review}
+Not only should the results of this research provide valuable insight to university administrators, it should also be of great interest to two related strands of economics and educational literature: 1) current research that explores institutional and student background characteristics that influence student achievement, and 2) current research that explores peer effects of student learning.
+
+\subsubsection{Determinants of Academic Performance}
+A substantial body of work explores the determinants of academic achievement and a subset of this literature has focused on the impact students' residences.  The findings in the literature are somewhat mixed.  \citee{tsr1993} find that freshman students who live on campus have higher retention, a greater degree of academic progress, and higher academic performance.  \citee{delucchi1993} examines a ``college town'' where most students who live off campus are still in close walking distance of their classes and university resources and finds no statistically significant difference in academic achievement between students that live on campus and off campus.  \citee{pascarella1993} finds that students who live on campus achieve larger gains from college when in comes to measures of critical thinking and cognitive skills, but find less impact when it comes to direct measures of reading comprehension and mathematical skills.  In a paper with a limited scope and sample size, \citee{kanoy1996} find that students who lived in residence halls had higher GPAs that those who did not.  In a more recent study, \citee{flowers2004} focuses exclusively on African American students and finds that living in dormitories positively influenced measures of personal and social development skills that he suggests are essential for successful academic achievement.  \citee{pikekuh2005} find residence is important when they examine the experiences of first-generation students.  They find that these students' characteristic low levels of academic engagement is a function living off-campus in addition to having lower educational aspirations.
+
+Further research on this subject is essential for three reasons: 1) most of these studies are somewhat dated, therefore some results may be primarily applicable to only to situations that existed when the studies were conducted, some of these ten to twenty years ago; 2) these studies do not explicitly address a sample selection problem which is discussed in the methodology section below, and therefore may not have relevant policy implications; and 3) with a few small exceptions these studies do not dig deeper into understanding \textit{why} students who live in campus housing perform better.
+
+The first of these criticisms, that simply too much time has progressed since many of these studies were completed, may seem somewhat weak at first, but it is a particularly important concern when it comes to education.  As \citee{pt1991} point out, student characteristics and features of higher education have changed significantly over the years.  The diversity of ethnic, cultural, and socio-economic backgrounds of students have expanded over the years; educational technology has developed substantially; and teaching and learning techniques have evolved.  In fact all these characteristics of students and college learning have evolved tremendously since \citename{pt1991} pointed them out in \citeyear{pt1991}.  As a consequence, we should expect the dynamics between academic achievement and students' backgrounds, students' peers, and institutional characteristics to have also changed.
+
+Addressing the second and third criticisms above is the main contribution to the literature of this research project.  Using the instrumental variables strategy will allow the results of this research to make direct statements about how living on campus \textit{causes} changes in academic performance.  Moreover, the results will illuminate what resources or strategies residence hall administrators can take advantage of to have the largest impact on student performance. 
+
+Besides literature focusing on specifically on students' residences, there is other research on academic performance that shed some light as to why students who live on campus may perform better.  Students that live on campus may be more likely to benefit from university provided resources.  \citee{ts2001} find empirical evidence that increases in institutional spending leads to improvements in students' learning.  However, they also find that increases in funding to academic support does not necessarily improve learning, suggesting that even non-academic resources on campus create an environment that fosters learning and good study habits.  Such resources may include services provided in dormitories, but they also likely include resources that on-campus students may be more likely to benefit from, such as computer and information technology, university clubs, university sponsored varsity and intramural sports, exercise facilities, and other extra-curricular activities.  \textit{One of the essential contributions of this research is to determine the extent to which on-campus students are more likely to take advantage of these resources, and then measure the extent to which these actions improve academic performance.}
+
+\subsubsection{Peer Effects}
+This project also contributes to a substantial literature that examines the influence of peers on students' academic performance.  Besides providing food and shelter, residence hall administrators provide a variety of activities and services to create an environment that causes students to develop close relationships with each other and which encourages students to study and socialize together.  The dynamics of social interactions and the influence of peers are likely to be different in dormitories than off-campus apartments.  
+
+Much of the peer effects literature focuses on primary and secondary education (see for example \citee{coleman1966}, \citee{hms1978}, \citee{er1998}, and \citee{hanushek2003}), but lately some authors are examining post-secondary education, such as \citee{ts2001}, \citee{zimmerman2003}.  The general finding in this literature is that peer influences do exist, but the extent to which these are positive or negative is somewhat mixed.  \citee{hms1978} find statistical evidence that positive peer effects are greater than negative peer effects.  That is, the positive influence of students who have more academic success is likely to be larger than the negative influence of students who have lesser academic success.  \citee{bettsmorrell1999} find a somewhat contradictory result when following high school students through college.  They find that negative influences of students' high school peers have persistent negative impacts on the students' college academic performance.  \citee{zimmerman2003} finds that the college students who are most influenced by their peers, either positively or negatively, are those whose SAT scores were in the middle of the distribution.  
+
+\textit{The final contribution of this project is to determine the impact living in dormitories has on peer effects on academic performance}.  To do so this research will examine social and study habits of students and how they depend on living arrangements.  For example, the results will determine how living on campus: 1) influences the academic abilities of a student's roommates; 2) influences how much time students spend studying with friends and classmates; and 3) influences how likely students are to engage in alcohol and drug consumption.
+
+\section{Methodology}
+\subsection{Data}
+Data was collected in Fall 2008 from students pursuing four-year baccalaureate degrees from Indiana University - Purdue University - Indianapolis (IUPUI).  At the time data was collected, this school had over 30,000 students, approximately 19,700 students under the age of 25 (the population that would most likely consider on-campus housing), and an on-campus housing capacity of only 1,107.  Since there is such a small availability of on-campus housing, living on campus is not required.  Most students do not live on campus, and those that do are primarily freshman.  An electronic survey that takes about 15 minutes to complete was sent to 6,000 undergraduate students that were sophomore level or above\footnote{First semester freshman were not surveyed because they did not yet earn their first grades and therefore do not have a GPA to report.} that asked them a variety of questions on background characteristics, living situations, social habits, study habits, university involvement and academic performance.  Although it is not a perfect measure of academic ability or the personal and educational gains from college, the survey asked for the students' semester and cumulative grade point average (GPA) to measure academic performance.\footnote{\citee{lvb1975} and \citee{kpv1997} argue there are many valuable outcomes that come from a college education, many of which cannot be directly measured by GPA.  Examples of these benefits include creative development, personality and social development, cultural development, philosophical development, and vocational preparation.}  
+
+Of the students surveyed, 363 completed the questionnaire.  This is a relatively low response rate, but \citee{sax2003} finds this is typical of online or e-mail based surveys.  To determine if the low response rate creates a sample selection bias, the background characteristics of those who completed the questionnaire will be compared to the background characteristics of the entire population of students as reported by IUPUI.  Any anticipated biases will be reported, and may be partially corrected for using a procedure suggested by \citee{heckman1979}.  Approximately 15\% of the students who completed the survey had lived on campus during some part of their time at IUPUI which is consistent with the population of IUPUI students.
+
+\subsection{Statistical Methodology}
+\subsubsection{Instrumental Variable Regression}
+The data will be analyzed in two steps, the second of which is more complex.  The first step will be an instrumental variable (IV) regression, also called an IV two-stage least squares regression, to establish whether living in dormitories causes better academic performance.  An IV regression handles the problem that \textit{students are not randomly assigned} into a treatment group and a control group.  Rather individuals in the sample decide for themselves whether to live on campus or off campus.  The problem is that many of the students that choose to live in dormitories may be the same students that enter college with high academic ambitions and choose to live in dormitories specifically for the academic benefits that derive from that choice.  Therefore a comparison of a treatment group versus a control group may not capture the effects of the treatment insomuch as it may capture differences in students when they enter college.  This problem is known as the \textit{sample selection bias}.
+
+The IV approach corrects for this sample bias.\footnote{This is a standard procedure in the econometrics literature for handling such biases. \citee{wooldridge}, chapter 5 and \citee{trivedi}, chapter 4 both provide good expositions of this statistical methodology.} This method works by identifying a variable (called the instrument or instrumental variable) that has a similar effect as a laboratory scientist developing an experiment.  The scientist would \textit{randomly assign} subjects to a control group and to a treatment group, so that the group assignment itself (only the treatment effect) is not related to the outcome.  An instrumental variable is data on another characteristic of the individuals in a sample that has a similar effect: it influences whether students are in the control group (on campus) or treatment (off campus), but it is not related to the outcome for academic performance, so it may be thought of as a random assignment.
+
+Two IVs are used in this study: 1) whether or not the student was denied on campus housing due to limited space, and 2) the distance a student's permanent address is to campus.  Since being accepted or denied for on-campus housing due to space limitations is a random draw of good luck or bad luck, this is a random assignment similar to what the laboratory scientist would do.  The second variable makes a good IV since students who have home towns far away from Indianapolis are likely to be unfamiliar with residential options, and therefore more likely to live on campus.  Since the distance from a student's hometown to campus is not likely related to their academic performance, this variable acts like a random assignment of students into the on-campus group and off-campus group.
+
+The IV regression will use these instruments to correct for sample-selection bias and will include a number of other background controls that have been shown in much of the literature cited above to influence academic performance.\footnote{Even though the focus of this research is predicting how living on campus affects student performance, other known influences need to be included in the regression to avoid the problem of omitted variable bias (see for example, \citee{trivedi}).}  Table \ref{tb:IV} describes what variables are included and the expected impact of each on academic performance.
+
+\begin{table}[h!] \caption{Background Control Variables} \label{tb:IV}
+\begin{center}
+\begin{tabular}{llp{3in}} \hline \hline
+\textbf{Variable} & \textbf{Expectation} & \textbf{Explanation} \\ \hline \hline
+High School GPA & Increase GPA & Indicates students entered college with high academic ability. \\ \hline
+ACT/SAT Percentile & Increase GPA & Indicates students entered college with high academic ability. \\ \hline
+Number of credits earned & Increase GPA & Students that have been in college longer tend to perform better. \\ \hline
+Non-traditional & Increase GPA & Non-traditional students (age>25) may be more mature and have higher ambition. \\ \hline
+Gender & Unknown & Used to account for differences in academic performance between men and women. \\ \hline
+Ethnicity & Unknown & A number of ethnicities are examined to account for differences due to minority status / difference in cultures. \\ \hline
+Parents' Income & Increase GPA & Students from high income families may have parents who are more encouraging or more familiar with challenges faced by college students. \\ \hline
+International student & Unknown & Used to account for cultural differences between international students and American students. \\ \hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}[h!] \caption{Intermediate Variables} \label{tb:intstep}
+\begin{center}
+\begin{tabular}{p{3in}cc} \hline \hline
+\textbf{Variable} & \textbf{On-Campus} & \textbf{Effect on Academic} \\ 
+& \textbf{Influence$^{1}$}& \textbf{Performance$^{2}$}\\ \hline \hline
+Average time spent per week studying & Unknown & Increase \\  \hline
+Average time spent per week studying \textit{with peers} & Increase & Increase \\\hline
+Average time spent per week in campus library & Increase & Increase \\\hline
+Average time spent per week using campus technology & Increase & Increase \\\hline
+Average time spent per week attending professors' office hours & Increase & Increase \\\hline
+Average time spent per week using university exercise facilities & Increase & Increase \\\hline
+Whether or not involved in university sponsored extra-curricular activities & Unknown & Unknown \\\hline
+Average quantity of alcohol consumption per week & Unknown & Decrease \\\hline
+Whether or not regularly engage in drug use & Unknown & Decrease \\ \hline \hline
+\multicolumn{3}{p{5in}}{\small{1. The expected impact living on campus has on the intermediate variable.}} \\
+\multicolumn{3}{p{5in}}{\small{2. The expected impact the intermediate variable has on GPA.}} \\
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{Multi-Stage Least Squares}
+The second step of the analysis will determine why students who live in dormitories may have higher academic performance.  The IV regression procedure described above will be extended to a multi-stage least squares procedure to first predict what impact the background control variables and living on campus have on peer effects and increased use of university provided resources (institutional effects) and secondly what impact these peer effects and institutional effects have on academic performance.\footnote{Technical note: this sentence should sound like there are two stages in the process.  This is referred to as a multi-stage least squares procedure since it extends the IV estimation which is a two-stage procedure in itself.}  This method therefore extends the previous IV estimation by adding an intermediate step which identifies what on-campus students doing differently that leads to increases in academic performance.  Table \ref{tb:intstep} shows what variables are included in this intermediate step (first column), describes what the impact of living on campus is expected to be on these variables (second column), and what the impact is expected to be on academic performance (third column).
+
+\section{Research Outcomes}
+The specific outcomes of this research are answers to the following questions:\be
+\item What is the size of the change in GPA \textit{that is caused by} the effects of living on campus?
+\item How much of the change in GPA can be attributed to increased convenience of institutional services?  Specifically, how much of the change in GPA is caused by on-campus students...
+  \be
+  \item spending more time using the campus library?
+  \item spending more time using university provided computer and technology services.
+  \item spending more time going to tutors?
+  \item spending more time going to professors' office hours?
+  \item spending more time using university provided exercise facilities?
+  \ee
+\item How much of the change in GPA can be attributed to differences in peer effects?  Specifically, how much of the change in GPA is caused by on-campus students...
+  \be
+  \item spending more time studying with roommates?
+  \item spending more time studying with classmates?
+  \item spending more time involved in university sponsored extra-curricular activities?
+  \item spending less time engaging in alcohol and drug consumption?
+  \ee
+\ee
+
+\section{Final Project / Dissemination}
+I intend to disseminate the knowledge gained from this research through presentation at a regional economics conference and publication of a scholarly article in a peer-reviewed journal.  I will consider the following conferences: Southern Economics Association meeting (November 2010), Eastern Economics Association meeting (February 2011), Midwest Economics Association meeting (March 2011), and the Missouri Economics Conference (March 2011).  Possible refereed journals to target for publication may include: \textit{Review of Economics and Statistics}, \textit{Journal of Applied Econometrics}, \textit{Southern Economic Journal}, \textit{Economics of Education Review}, \textit{Education Economics}, \textit{Journal of Applied Statistics}, \textit{Journal of Statistical Research}, \textit{Review of Higher Education} \textit{Journal of Higher Education}, and \textit{Research in Higher Education}.
+
+\newpage
+
+\nocite{*}
+%\begin{singlespace}
+\bibliographystyle{econometrica}
+\bibliography{dorms}
+%\end{singlespace}
+
+\newpage
+\begin{center} 
+\textbf{\Large{James Murray - Curriculum Vitae}}\\
+\end{center}
+\small 
+
+\textbf{Contact Information} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{3.4in} p{3in}}
+University of Wisconsin - La Crosse\newline
+Department of Economics \newline
+1725 State St. \newline
+La Crosse, WI  54601
+&
+Office Phone: (608) 785 5140\newline
+Mobile Phone: (608) 738 5408\newline
+E-mail: \texttt{murray.jame@uwlax.edu}\newline
+Web: \textit{http://www.murraylax.org}
+\end{tabular} \\
+
+\textbf{Education} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{.5in} p{.6in} p{2.5in} p{2in}}
+Ph.D. & Economics, & Indiana University & September 2008 \\
+M.A. & Economics, & Indiana University & May 2004  \\
+M.A. & Economics, & University of Notre Dame & May 2002 \\
+B.S. & Economics, & University of Wisconsin - La Crosse & May 2000 \\
+\end{tabular} \\ 
+
+\textbf{Employment} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{1.5in} p{1.7in} p{1.5in}}
+Assistant Professor & U. Wisconsin La Crosse & 8/2009 - present \\
+Assistant Professor & Viterbo University & 8/2008 - 5/2009 \\
+Teaching Fellow & IUPU - Columbus & 8/2007 - 5/2008 \\
+Adjunct Professor & Viterbo University & 5/2006 - 8/2007 \\
+Associate Instructor & Indiana University & 9/2003 - 5/2007 \\
+Adjunct Professor & Ivy Tech State College & 3/2004 - 8/2004 \\
+\end{tabular} \\ 
+
+\textbf{Working Papers} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{6.5in}}
+``Initial Expectations in New Keynesian Models with Learning''\\
+``Empirical Significance of Learning in a New Keynesian Model with Firm-Specific Capital''\\
+``Regime Switching, Learning, and the Great Moderation'' \\
+``Estimating the Effects of Dormitory Living on Student Performance'' with Pedro de Araujo.\\
+``A Life Insurance Deterrent to Risky Behavior in Africa'' with Pedro de Araujo.
+\end{tabular} \\
+
+\textbf{Refereed Publications} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{6.2in}}
+``Shirking in Major League Baseball in the Era of the Reserve Clause.'' with Glenn Knowles, Michael Haupert, and Keith Sherony. \textit{Nine: A Journal of Baseball History and Social Policy Perspectives.}  Volume 9. Spring 2001. \\
+\end{tabular} \\
+
+\textbf{Conference and Seminar Presentations} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{6.5in}}
+``Regime Switching, Learning, and the Great Moderation''\\
+\hspace*{1pc} Missouri Economics Conference, University of Missouri, March 2009.\\
+
+``Initial Expectations in New Keynesian Models with Learning''\\
+\hspace*{1pc} Winona State University Economics and Finance Department Seminar, February 2009.\\
+\hspace*{1pc} University of Wisconsin - La Crosse Economics Department Seminar, December 2008.\\
+``Financial Crises 101,'' Topics Unlimited, St. John Episcopalian Seminar Series, October 2008.\\
+\end{tabular}
+
+\hspace*{-0.5pc}\begin{tabular}{p{6.5in}}
+
+``Empirical Significance of Learning in a New Keynesian Model with Firm-Specific Capital''\\
+\hspace*{1pc} Learning Week Conference, St. Louis Federal Reserve Bank, July 2007.\\
+\hspace*{1pc} Indiana University Economics Department Brown Bag Workshop, May 2007.\\
+\hspace*{1pc} Jordan River Conference, Indiana University, April 2007.\\
+\hspace*{1pc} Missouri Economics Conference, University of Missouri, March 2007.\\
+
+``Empirical Significance of Learning and the Consequences of Mis-specifying Expectations''\\
+\hspace*{1pc} Indiana Academy of Social Sciences Annual Meeting, October 2006.\\
+\hspace*{1pc} Jordan River Conference, Indiana University, April 2006.\\
+
+``Liquidity in a Two Country Open Economy Model: Evidence from United States and Germany''\\
+\hspace*{1pc} Jordan River Conference, Indiana University, April 2005.
+\end{tabular} \\
+
+\textbf{Professional/Academic Service} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{6.2in}}
+\textit{Referee Service:}  \textit{Journal of Money, Credit, and Banking}, \textit{Studies in Nonlinear Dynamics \& Econometrics}, \textit{Journal of Macroeconomics}.\\
+
+\textit{Newspaper publications:} ``Expectations for Monetary Policy,'' \textit{Business Connection,} April 2008; and ``Economic Outlook for Bio-Fuels,'' \textit{Business Connection,} February 2008. \\
+
+\textit{University of Wisconsin - La Crosse:} College of Business Administration Graduate Curriculum Committee, ECO 120: Global Macroeconomics learning objectives ad hoc committee, BUS 230: Business Research Methods and Communication learning objectives ad hoc committee, Regular attendee and faculty mentor to the Economic Club student organization. \\
+
+\textit{Viterbo University}:  Environmental Task Force, Environmental Studies Committee, Students in Free Enterprise (SIFE) faculty adviser, Dahl School of Business Graduate Curriculum Committee.\\
+
+\textit{Indiana University Purdue University - Columbus}: Economics Candidate Search and Screen Committee.
+\end{tabular} \\
+
+\textbf{Computer Skills} \toprule
+\hspace*{-0.5pc}\begin{tabular}{p{2in} p{4.2in}}
+Teaching Tools: & Desire2Learn, Blackboard, Oncourse CL, Aplia, MyEconLab, CourseCompass, Discover Econ, E-instruction CPS (Classroom Performance System), Interwrite PRS (Personal Response System). \\
+Econometrics / Statistics: & MatLab, Octave, Gauss, Maple, Stata, EViews, Limdep, RATS, SAS, SPSS, Statistica, GNU Scientific Libraries for C, LAPACK (Linear Algebra Package for Fortran). \\
+Programming Languages: & C, C++, MS Visual C++, MS Visual Basic, Java, Fortran, Eiffel, Perl. \\
+Web Programming: & Java, Perl, HTML, Javascript. \\
+Operating Systems: & Linux, Unix, Windows.\\
+Other: & \LaTeX, Beamer for \LaTeX, Emacs, SQL, Unix shell programming (BASH, CSH), MS Office. \\
+\end{tabular} \\
+
+\textbf{References available upon request.} \\
+
+
+\end{document}
+
+
+

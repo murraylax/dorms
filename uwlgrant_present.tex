@@ -1,0 +1,309 @@
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{verbatim}
+
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{pgf}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+
+\newcommand{\ft}[1]{
+  %\frametitle{\begin{tabular}{p{4.2in}r} \textcolor{white}{#1} & \small{\insertframenumber / \inserttotalframenumber} \end{tabular}}
+  \frametitle{\begin{tabular}{p{4.2in}r} \textcolor{white}{#1} & \small{\insertframenumber / 7} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\eft}[1]{
+  \frametitle{\begin{tabular}{p{4in}r} \textcolor{white}{#1} & \small{\hyperlink{f:questions}{\beamergotobutton{GO BACK}}} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\stepinv}{\setbeamercovered{invisible}}
+\newcommand{\stopinv}{\setbeamercovered{transparent=18}}
+\newcommand{\uncoverinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{#1}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\ans}[1]{\textcolor{blue}{#1}}
+\newcommand{\ansinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{\textcolor{blue}{#1}}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\setinv}{\setbeamercovered{invisible}}
+\newcommand{\setvis}{\setbeamercovered{transparent=18}}
+\newcommand{\centerpic}[2]
+{
+  \begin{center}
+  \includegraphics[#1]{#2}
+  \end{center}
+}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+%\definecolor{light}{rgb}{1.0,0.33,0.33}
+\definecolor{light}{rgb}{1.0,0.5,0.5}
+\newcommand{\hl}[1]{\alt<#1>{\rowcolor{light}\hspace*{-2.1pt}} {\hspace*{-2.1pt}} }
+
+\definecolor{mycolor}{rgb}{0.6,0.0,0.0}
+\usecolortheme[named=mycolor]{structure}
+
+\title[Academic Benefits of Living On Campus]{Academic Benefits of Living On Campus:}
+\subtitle{A Look At Peer Influences and Utilization of University Provided Resources}
+\author[James Murray, Department of Economics]{James Murray\\Department of Economics\\University of Wisconsin - La Crosse}
+\date{November 19, 2009}
+
+\begin{document}
+
+\frame{\titlepage \setcounter{framenumber}{0}}
+
+\section{Purpose}
+\subsection{Grade Point Average}
+\frame
+{
+  \ft{Purpose}
+  \uncover<+->{How does living on campus influence academic performance?}
+  \bi
+  \item<+-> Quantify the impact of living on campus on students' Grade Point Average (GPA).
+  \ei
+}
+  
+\subsection{Campus Resources}
+\frame
+{
+  \ft{Campus Resources}
+  \uncover<+->{Are differences in GPA due to greater utilization of resources?}\\
+  \vspace*{1pc}
+  \uncover<+->{Do on-campus students...}
+    \bi
+    \item<.-> use university academic resources (libraries, computer technology) more often?
+    \item<.-> use university provided exercise facilities more often?
+    \item<.-> use tutoring services more often?
+    \item<.-> go to professors' office hours more often?
+    \ei
+}
+
+\subsection{Peer Influences}
+\frame
+{
+  \ft{Peer Influences}
+  \uncover<+->{Are differences in GPA due to differences in peer influences?}\\
+  \vspace*{1pc}
+  \uncover<+->{Are on-campus students...}
+    \bi
+    \item<.-> more likely to study with roommates and/or classmates?
+    \item<.-> more likely to join university-sponsored extracurricular activities?
+    \item<.-> less likely to engage in drugs and alcohol?
+    \item<.-> less likely to have roommates engaging in drugs and alcohol?
+    \ei
+}
+
+\section{Significance}
+\subsection{Policy Significance}
+
+\frame
+{
+  \ft{Policy Significance}
+  \uncover<+->{
+    \begin{block}{Policy Questions}
+      \be
+      \item<+-> Can changing residence hall resources and/or residence hall policies effect academic performance?
+      \item<+-> If so, \textit{how?}
+      \ee	
+    \end{block}
+  }
+  \uncover<+-> {
+  \begin{block}{Search for Causation}
+    \bi
+    \item<+-> Instrumental Variable Regression: statistical technique used to determine causation.
+    \item<+-> Essential for policy implications.
+    \ei
+  \end{block}
+  }
+}
+
+\subsection{Scholarly Significance}
+\frame
+{
+  \ft{Scholarly Significance}
+  \uncover<+-> {
+    \begin{block}{On Campus Residence}
+      \bi
+      \item<+-> Positive impact on academics: Thompson, et. al. (1993).
+      \item<+-> No difference: Delucchi (1993).
+      \item<+-> Critical thinking skills: Pascarella et. al. (1993): 
+      \item<+-> Social development skills: Flowers (2004).
+      \ei
+    \end{block}
+  }
+
+  \uncover<+->{
+    \begin{block}{Peer Influences}
+      \bi
+      \item<+-> Positive influences are dominant: Henderson et. al. (1978).
+      \item<+-> Negative influences carry through college: Betts and Morell (1999).
+      \item<+-> ``Average'' students most susceptible to peer influence: Zimmerman (2003).
+      \ei
+    \end{block}
+  }
+}
+
+\frame
+{
+  \ft{Need for More Research}
+  \bi
+  \item<+-> Find evidence of causation.
+  \item<+-> Investigate the \textit{channels} of dormitory influences.
+  \item<+-> Changes in student characteristics and features of higher learning likely changes how students learn: Pascarella and Terenzini (1991).
+  \ei
+}
+
+\section{Methodology}
+\frame
+{
+  \ft{Methodology}
+  \uncover<+->{
+  \begin{block}{Stage 1: Instrumental Variable Regressions}
+    \bi
+    \item<+-> Explanatory Variables: Dormitory + Background characteristics (Table 1).
+    \item<+-> Dependent Variables: Resource Utilization and Peer Influences (Table 2).
+    \ei
+  \end{block}
+  }
+
+  \uncover<+->{
+  \begin{block}{Stage 2: Regression}
+    \bi
+    \item<+-> Explanatory Variables: Resource Utilization and Peer Influences 
+    \item<+-> Dependent Variable: Academic Performance (GPA).
+    \ei
+  \end{block}
+  }
+  \uncover<+->{Traces (and quantifies) the \textit{channel} in which living on campus influences academic performance.}
+
+}
+
+\section{}
+\subsection{Questions?}
+\begin{frame}\label{f:questions}
+  \begin{center}Questions?\end{center}
+  \begin{center}\hyperlink{f:resources}{\beamergotobutton{Answers}}\end{center}
+\end{frame}
+
+\section{}
+\subsection{Additional Information}
+\begin{frame}\label{f:resources}
+  \frametitle{Additional Information}
+  \bi
+  \item Data \hyperlink{f:data}{\beamergotobutton{GO}}
+  \item Table 1: Background control variables \hyperlink{f:background}{\beamergotobutton{GO}}
+  \item Table 2: Intermediate variables \hyperlink{f:intermediate}{\beamergotobutton{GO}}
+  \item Instrumental Variable Regression \hyperlink{f:iv}{\beamergotobutton{GO}}
+  \ei
+\end{frame}
+
+\section{}
+\subsection{Data}
+\begin{frame}\label{f:data}
+  \eft{Data}
+  \begin{block}{Population}
+  \bi
+  \item Undergraduate students at Indiana University Purdue University - Indianapolis.
+  \item Approximately 19,700 students under age 25.
+  \item Extremely limited on-campus housing capacity: 1,107.
+  \item No on-campus housing requirements.
+  \ei
+  \end{block}
+
+  \begin{block}{Sample}
+  \bi
+  \item Electronic survey given to 6,000 undergraduate in Fall 2008.
+  \item 363 completed questionnaire [see Sax et. al. (2003)]
+  \item Questions included: living situation, social life, study habits, campus resource utilization, cultural background, academic background.
+  \ei
+  \end{block}
+\end{frame}
+
+\section{}
+\subsection{Background Characteristics}
+\begin{frame}\label{f:background}
+  \eft{Background Characteristics}
+  \bi
+  \item High School GPA.
+  \item ACT/SAT percentile.
+  \item Number of college credits earned.
+  \item Non-traditional student.
+  \item Gender.
+  \item Ethnicity.
+  \item Parents income.
+  \item International student.
+  \ei
+\end{frame}
+
+\section{}
+\subsection{Intermediate Variables}
+\begin{frame}\label{f:intermediate}
+  \eft{Intermediate Variables}
+  \begin{block}{Utilization of University Resources}
+  \bi
+  \item Hours per week spent studying.
+  \item Hours per week using library, campus technology.
+  \item Hours per week using campus fitness facilities.
+  \item Hours per week attending professors' office hours.
+  \item Hours per week using tutors.
+  \ei
+  \end{block}
+
+  \begin{block}{Peer Influences}
+  \bi
+  \item Hours per week studying with classmates / roommates.
+  \item Involvement in university sponsored extracurricular activities.
+  \item Drug and alcohol use.
+  \item Peer drug and alcohol use.
+  \ei
+  \end{block}
+\end{frame}
+
+\section{}
+\subsection{Instrumental Variable Regression}
+\begin{frame}\label{f:iv}
+  \eft{Instrumental Variable Regression}
+  \uncover<+->{
+  \begin{block}{Sample Selection Bias}
+    \bi
+    \item<+-> Subjects \textit{are not randomly} put into treatment and control groups.
+    \item<+-> More highly motivated students \textit{may choose} to live in dorms.
+    \item<+-> Comparing on-campus students to off campus students may amount to simply comparing highly motivated students to less motivated students.
+    \ei
+  \end{block}}
+
+  \uncover<+->{
+  \begin{block}{Instrumental Variables}
+    \bi
+    \item<+-> Find variable(s) \textit{unrelated to academic performance} that help(s) determine treatment/control assignment.
+    \item<+-> Instruments: distance of hometown from school, denied housing due to space limitations.
+    \ei
+  \end{block}}
+
+\end{frame}
+
+
+\end{document}
+

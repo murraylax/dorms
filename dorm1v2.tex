@@ -1,0 +1,411 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{.4in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1.5 }
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} \citeyear{#1}}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\pagestyle{fancyplain}
+\lhead{}
+\chead{Effects of Dormitory Living on Student Performance}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{singlespace}
+\title{Estimating the Effects of Dormitory Living on Student Performance}
+\date{\today}
+\author{
+Pedro de Araujo\thanks{E-mail: Pedro.deAraujo@coloradocollege.edu} \\
+Colorado College
+\and
+James Murray \\
+University of Wisconsin - Lacrosse
+}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\abstract{Many large universities require freshman to live in dormitories on the basis that living on campus leads to better classroom performance and lower drop out incidence. Large universities also provide a number of academic services in dormitories such as tutoring and academic student organizations. After administering a survey to college students at a large state school to determine what impact dormitory living has on student performance, we found that, for different model specifications and estimation techniques, on average, living in a dorm increases cumulative GPA by between 0.19 to 1.16. That is, the effect of dormitory living on student performance ranges between a third of a letter grade to a full letter grade plus a third.} \newline
+
+\noindent \textit{Keywords}: Student performance, dormitory, cross-section analysis, regression, instrumental variables. \\
+\noindent \textit{JEL classification}: C13, C21, I21.
+\end{singlespace}
+\end{titlepage}
+
+\section{Introduction}
+
+What are the most important contributors to student learning? Although, there might be many answers to this question, this paper particularly investigates dormitory living as a determinant of student performance.  Many studies have attempted to identify determinants of student performance, some focus on peer effects, while others on location of residence as determinants of some measure of academic success. This paper will address both of these issues with more focus on the latter.
+
+Due to either lack of data or inadequate statistical methodology, the magnitude and significance of these aforementioned effects are still under serious debate. This paper improves upon current statistical methodology by addressing possible endogeneity problems involving student's living arrangements using instrumental variable techniques for a sample collected in the fall of 2008 from students from Indiana University-Purdue University Indianapolis (IUPUI). The novelty of this approach is that it allows for a cleaner estimation of the coefficient on dormitory living by removing the possible self selection bias from students selecting to live in a dorm.
+
+The main result of the paper is that, after controlling for self selection and student's background characteristics, living in a dorm increases cumulative GPA by about a full letter grade. These results are shown to be robust to different estimation methods. Also, it provides to college administrators important information that can shape university policy with respect to living arrangements.
+
+The remainder of the paper will be organized as follows: first, we will briefly review some of the literature. Second, we will describe the data collection process, the empirical strategy, and the variables used in the analysis. Third, we will discuss the results followed by the concluding remarks and suggestions for further work.
+
+\section{Related Literature}
+
+We find that this paper complements 2 different strands of economic and educational literature regarding student learning: the determinants of student performance and peer effects on learning.
+
+\subsection{Determinants of Student Performance}
+
+A substantial body of work explores the determinants of academic achievement and a subset of this literature has focused on the impact students' residences. The findings in the literature are somewhat mixed. \citee{tsr1993} find that freshman students who live on campus have higher retention, a greater degree of academic progress, and higher academic performance. \citee{delucchi1993} examines a ``college town" where most students who live off campus are still in close walking distance of their classes and university resources and finds no statistically significant difference in academic achievement between students that live on campus and off campus. \citee{pascarella1993} finds that students who live on campus achieve larger gains from college when in comes to measures of critical thinking and cognitive skills, but find less impact when it comes to direct measures of reading comprehension and mathematical skills. In a paper with a limited scope and sample size, \citee{kanoy1996} find that students who lived in residence halls had higher GPAs that those who did not. In a more recent study, \citee{flowers2004} focuses exclusively on African American students and finds that living in dormitories positively influenced measures of personal and social development skills that he suggests are essential for successful academic achievement. \citee{pikekuh2005} find residence is important when they examine the experiences of first-generation students. They find that these students' characteristic low levels of academic engagement is a function living off-campus in addition to having lower educational aspirations.
+
+Further research on this subject is essential for three reasons: 1) most of these studies are somewhat dated, therefore some results may be primarily applicable to only to situations that existed when the studies were conducted, some of these ten to twenty years ago; 2) these studies do not explicitly address a sample selection problem which is discussed in the methodology section below, and therefore may not have relevant policy implications; and 3) with a few small exceptions these studies do not dig deeper into understanding why students who live in campus housing perform better.
+
+The first of these criticisms, that simply too much time has progressed since many of these studies were completed, may seem somewhat weak at first, but it is a particularly important concern when it comes to education. As \citee{pt1991} point out, student characteristics and features of higher education have changed significantly over the years. The diversity of ethnic, cultural, and socio-economic backgrounds of students have expanded over the years; educational technology has developed substantially; and teaching and learning techniques have evolved. In fact all these characteristics of students and college learning have evolved tremendously since \citename{pt1991} pointed them out in \citeyear{pt1991}. As a consequence, we should expect the dynamics between academic achievement and students' backgrounds, students' peers, and institutional characteristics to have also changed.
+
+Addressing the second criticism above is the main contribution to the literature of this paper. Using the instrumental variables strategy will allow the results of this research to make direct statements about how living on campus causes changes in academic performance.
+
+Besides literature focusing on specifically on students' residences, there is other research on academic performance that shed some light as to why students who live on campus may perform better. Students that live on campus may be more likely to benefit from university provided resources. \citee{ts2001} find empirical evidence that increases in institutional spending leads to improvements in students' learning. However, they also find that increases in funding to academic support does not necessarily improve learning, suggesting that even non-academic resources on campus create an environment that fosters learning and good study habits. Such resources may include services provided in dormitories, but they also likely include resources that on-campus students may be more likely to benefit from, such as computer and information technology, university clubs, university sponsored varsity and intramural sports, exercise facilities, and other extra-curricular activities. Investigating these channels through which dormitory living might affect student performance will be left for a separate research project.
+
+\begin{comment}
+
+\subsection{Peer Effects}
+
+This paper also contributes to a substantial literature that examines the influence of peers on students' academic performance, eventhough, this is not our main question. Besides providing food and shelter, residence hall administrators provide a variety of activities and services to create an environment that causes students to develop close relationships with each other and which encourages students to study and socialize together. The dynamics of social interactions and the influence of peers are likely to be different in dormitories than off-campus apartments.
+
+Much of the peer effects literature focuses on primary and secondary education (see for example \citee{coleman1966}, \citee{hms1978}, \citee{er1998}, and \citee{hanushek2003}), but lately some authors are examining post-secondary education, such as \citee{ts2001}, \citee{zimmerman2003}. The general finding in this literature is that peer influences do exist, but the extent to which these are positive or negative is somewhat mixed. Henderson, \citee{hms1978} find statistical evidence that positive peer effects are greater than negative peer effects. That is, the positive influence of students who have more academic success is likely to be larger than the negative influence of students who have lesser academic success. \citee{bettsmorrell1999} find a somewhat contradictory result when following high school students through college. They find that negative influences of students' high school peers have persistent negative impacts on the students' college academic performance. \citee{zimmerman2003} finds that the college students who are most influenced by their peers, either positively or negatively, are
+those whose SAT scores were in the middle of the distribution.
+
+\end{comment}
+
+\section{Data and Methodology}
+
+Data was collected in Fall 2008 from students pursuing four-year baccalaureate degrees from IUPUI. At the time data was collected, this school had over 30,000 students, approximately 19,700 students under the age of 25 (the population that would most likely consider on-campus housing), and an on-campus housing capacity of only 1,107. Since there is such a small availability of on-campus housing, living on campus is not required. Most students do not live on campus, and those that do are primarily freshman. An electronic survey that takes about 15 minutes to complete was sent to 6,000 undergraduate students that were sophomore level or above that asked them a variety of questions on background characteristics, living situations, social habits, study habits, university involvement and academic performance. Although it is not a perfect measure of academic ability or the personal and educational gains from college, the survey asked for the students' semester and cumulative grade point average (GPA) to measure academic performance.
+
+Of the students surveyed, 363 completed the questionnaire. This is a relatively low response rate, but \citee{sax2003} finds this is typical of online or e-mail based surveys. To determine if the low response rate creates a sample selection bias, the background characteristics of those who completed the questionnaire will be compared to the background characteristics of the entire population of students as reported by IUPUI whenever available. \begin{comment}Any anticipated biases will be reported, and may be partially corrected for using a procedure suggested by Heckman (1979).\end{comment} Approximately 15\% of the students who completed the survey had lived on campus during some part of their time at IUPUI which is consistent with the population of IUPUI students.
+
+The structural equation for this exercise is given by:
+
+\beq GPA_i = \alpha + \beta DORM_i + X_i'\Omega + \epsilon_i ,\label{eq:struct} \eeq
+
+\noindent where GPA is each student's cumulative GPA or their last semester's GPA, DORM is a dummy variable that equals 1 for students that have ever lived in dorms and 0 otherwise. We also use a dummy variable that only captures living in a dorm last semester. The vector X has controls measuring student's background characteristics such as: parents income (PINC), gender, and SAT/ACT percentiles (TEST). Also, we use the total number of semesters the student has been enrolled for classes at IUPUI (TSEM), if the student is older than 25 (NTS) and an interaction between TSEM and TEST. The error term is assumed to be normal with zero mean and variance $\sigma^2$. 
+
+With these variables, we fit three different specifications of the model. First (specification 1), we regress cumulative GPA on having ever lived in a dorm plus controls as to capture the overall effect of dormitory living on performance. Second (specification 2), we regress last semester's GPA on having ever lived in a dorm plus controls as to capture more of the long run effects of living in a dorm. And third (specification 3), we regress last semester's GPA on having lived in a dorm last semester plus controls as to capture more of the instantaneous effect of dormitory living on performance.
+
+Hence, the parameter of interest in this study is $\beta$ as it measures the marginal effect on GPA associated with having lived in a dorm. However, identification of $\beta$ can become somewhat difficult if $E(\epsilon_i|DORM_i) \neq 0$, that is, if dormitory living is endogenous. Under these circumstances, ordinary least squares estimation of $\beta$ will lead to inconsistent and biased results. Because it is quite possible that student's decision to live in a dorm is correlated with some unmeasured intrinsic ability that affects performance, the variable DORM in equation \ref{eq:struct} is believed to be endogenous. 
+
+One possible way to deal with an endogenous regressor is to use the control function approach (\citee{trivedi}), that is, as long as a subset of our explanatory variables measure student's intrinsic abilities, which are correlated with DORM, the OLS estimates of $\beta$ are consistent. In our structural equation, we have such variables (ACT/SAT percentiles and parents income); therefore, it is possible that OLS provides clean estimates of the marginal effect on GPA from dormitory living. In fact, when the robust Durbin-Wu-Hausman test for endogeneity was performed, it failed to reject the null of exogeneity whenever the control measuring SAT/ACT percentile was present in specification 1. In the absence of this control, this same test rejected the null indicating that dormitory living was an endogenous regressor (table \ref{tab:endo}). The same is not the case for specifications 2 and 3. In fact, it is evident from table \ref{tab:endo} that ordinary least squares might be the best linear unbiased estimator under specifications 2 and 3.
+
+Even though it appears that the model with ACT/SAT percentiles produces consistent estimates of $\beta$, it is still possible that dormitory living is endogenous as the test only fully rejects exogeneity and not endogeneity. There is still the possibility that students self select into dorms because of what dorms have to offer. That is, some students could possibly want to have easier access to class or the library, or want to interact with more peers on a day to day basis. All of these effects are potentially correlated with performance and our sample does not have variables that captures all of these effects. Hence, besides using the control function approach, we also estimate $\beta$ by instrumental variables. 
+
+In our sample, we asked students how far way from campus is their hometown (DIST) and also if they were denied access to dorms for some reason other then their own choice (DEN). Both of these variables are good candidates for instruments as they both are correlated with your decision to live in a dorm (the distance from campus could indicate how comfortable you are with the city and therefore can affect your decision not to want to live off-campus), but not correlated with GPA. Hence, we use both variables jointly as instruments and also just the distance variable as the instrument in our estimation exercise\footnote{Weak instrument tests (Stock and Yogo test and joint F test) have been performed and there is enough evidence that both instruments are jointly not weak in specification 1. This is not the case in specifications 2 and 3 (evidence that they are not weak only if we allow for a 20 to 30\% relative OLS bias in the coefficient estimate), however, these are the specifications where there is the least amount of evidence of endogeneity.}. This leads to the following first stage reduced form equation:
+
+\beq DORM_i  = \gamma + Z_i'\Lambda + X_i'\Omega + \nu_i \label{eq:fsr} ,\eeq
+
+\noindent where Z is our instrument vector and $\nu$ is normal with zero mean and variance $\sigma_{\nu}^2$.
+
+In the case of the model with two instruments, either different assumptions about the data generating process for DORM or different assumptions on the variance-covariance matrix of the estimates implies different estimation techniques. Because specifications 2 and 3 are heteroskedastic (table \ref{tab:het}) and it has been shown that GMM outperforms two stage least squares in this case (\citee{trivedi}), we estimate the model using the general method of moments (GMM) as it is much more flexible on its distributional assumptions. We also use GMM for specification 1 as the results do not significantly differ from the results in two stage least squares.
+
+Because our endogenous regressor is binary, we have also estimated the model assuming a latent variable model in the first stage. This imposes more structure in the model and according to \citee{trivedi} might lead to more precise estimates at the expense of misspecifying the model. Below, we present our results for $\beta$ using all the techniques described above.
+
+\section{Results}
+
+The results from all 3 specifications (tables \ref{tab:res_cgpa}, \ref{tab:res_sgpa_dorme}, and \ref{tab:res_sgpa_dorm}) suggest that students who have lived in dorms perform better. Table \ref{tab:res_cgpa} indicates that the effect on cumulative GPA of having ever lived in a dorm is between 0.2 (OLS) and 0.45 (GMM). This effect is not negligible as a 0.33 increase in GPA corresponds to a change in grade level, say from B to B+. Because there is evidence that for this specification, GMM is probably the most clean estimator, we estimate that a student who has ever lived in a dorm will have on average a GPA that is almost half a letter grade higher than a student who has never lived in a dorm. Another interesting observation here is that if our OLS estimate is biased, the bias is downward. This suggests that the self selection to live in a dorm are from students who believe that dormitory living can offer better ways to improve performance relative to other living arrangements, that is, it is not the better students who are self selecting to live in a dorm, but the students who have the most to gain.
+
+When we analyze more of the long run effects of living in a dorm (table \ref{tab:res_sgpa_dorme}), the effect is smaller for all estimators. For reasons mentioned above, the heteroskedasticity robust ordinary least squares (HROLS) seems to be the more reliable estimate, and in that case, having ever lived in a dorm only affects last semesters GPA by 0.21. If this specification also presents endogeneity, the results are in line with the results from table \ref{tab:res_cgpa}. The fact that the effect here is smaller compared to the effect described above is no surprise as we could have students in their fourth year that only lived in dorms their first, whereas, specification one can capture contemporaneous effect on GPA of living in dorms.
+
+In order to understand this contemporaneous relationship, we regressed last semester's GPA on having lived in a drom last semester. For the same reasons as in specification 2, HROLS seems to be the most appropriate estimator in this case. The results indicate that the effect of dormitory living on student performance is much larger and in the order of 0.3. This is true also for all other estimators. Hence, our results indicate that not only dormitory living affects performance positively, but that this effect is stronger whenever the performance is measured contemporaneously with living in a dorm. However, we have also shown that there is some evidence that dormitory living can influence performance in the longer term.
+
+\section{Conclusion}
+
+BLAH BLAH BLAH
+
+\newpage
+\begin{singlespace}
+\nocite{*}
+\bibliographystyle{econometrica}
+\bibliography{dorms}
+\end{singlespace}
+
+\newpage
+
+
+\begin{table}\textbf{\caption{P-Values from Endogeneity Tests (Null: no endogeneity)} \label{tab:endo}}
+\centering
+\vspace{0.25pc}
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+\multicolumn{5}{c}{Model: Cumulative GPA and Dorm Ever} \\
+Instrument/Specification & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+DIST / LPM & 0.606 & 0.074* & 0.585 & 0.042**\\
+DIST and DEN / LPM & 0.366 & 0.030** & 0.368 & 0.018** \\
+DIST and DEN / LVM & 0.115 & 0.043** & 0.118 & 0.053* \\
+\hline
+\hline
+\multicolumn{5}{c}{Model: Semester GPA and Dorm Ever} \\
+Instrument/Specification & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+DIST / LPM & 0.893 & 0.374 & 0.801 & 0.296\\
+DIST and DEN / LPM & 0.670 & 0.251 & 0.587 & 0.201 \\
+DIST and DEN / LVM & 0.133 & 0.182 & 0.090* & 0.139\\
+\hline
+\hline
+\multicolumn{5}{c}{Model: Semester GPA and Dorm Semester} \\
+Instrument/Specification & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+DIST / LPM & 0.801 & 0.288 & 0.722 & 0.213\\
+DIST and DEN / LPM & 0.585 & 0.160 & 0.586 & 0.143\\
+DIST and DEN / LVM & 0.072* & 0.293 & 0.071* & 0.169\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{6.25 in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Durbin-Wu-Hausman test for LPM, and LR test for LVM.
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Breusch-Pagan/Cook-Weisberg Heteroskedasticity Test} \label{tab:het}}
+\centering
+\vspace{0.25pc}
+\begin{tabular}{l l}
+\hline
+\hline
+\multicolumn{1}{c}{Specification} & p-value \\
+\hline
+Cumulative GPA and Dorm Ever & 0.196 \\
+Semester GPA and Dorm Ever & 0.005*** \\
+Semester GPA and Semester Dorm & 0.003*** \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{3.25 in}}
+Note: Null: homoskedasticity. *** significant at 1\%.
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Determinants of Student Performance - Cumulative GPA} \label{tab:res_cgpa}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & OLS & IV & GMM & MLE\\
+\hline
+DORM\_E & 0.210** & 0.312* & 0.448*** & 0.431***\\
+   &  [0.087] & [0.187] & [0.140] & [0.156]\\
+\hline
+GENDER & -0.200** & -0.214** & -0.234*** & -0.220***\\
+ & [0.085] & [0.088] & [0.088] & [0.085]\\
+PINC & -0.001 & -0.001 & -0.001 & -0.001\\
+ & [0.0009] & [0.0009] & [0.0009] & [0.0009]\\
+PINC\_d & 0.065 & 0.042 & -0.002 & 0.023\\
+& [0.183] & [0.200] & [0.198] & [0.183]\\
+NTS & 0.027 & 0.056 & 0.078 & 0.084\\
+& [0.137] & [0.152] & [0.150] & [0.140]\\
+TEST & 0.004** & 0.003* & 0.003* & 0.003*\\
+& [0.001] & [0.001] & [0.001] & [0.001]\\
+TSEM & -0.010 & -0.011 & -0.011 & -0.013\\
+& [0.014] & [0.016] & [0.016] & [0.014]\\
+TEST\_TSEM & -0.0001 & -0.0008 & -0.00006 & -0.00005\\
+& [0.0002] & [0.0002] & [0.0002] & [0.0002]\\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 227 & 226 & 226 & 226\\
+Wald Chi & n.a. & 29.42*** & 41.81*** & 32.23***\\
+F-stat & 3.78*** & ---- & ---- & ---- \\
+$R^2$ & 0.122 & 0.113 & 0.088 & ---- \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. MLE - Estimation of model assuming latent variable in stage 1.
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Determinants of Student Performance - Semester GPA (Dorm Ever)} \label{tab:res_sgpa_dorme}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & HROLS & IV & GMM & MLE\\
+\hline
+DORM\_E & 0.185* & 0.221 & 0.416** & 0.410**\\
+   &  [0.095] & [0.289] & [0.212] & [0.166]\\
+\hline
+GENDER & -0.247** & -0.254*** & -0.262 & -0.257***\\
+ & [0.100] & [0.099] & [0.100] & [0.091]\\
+PINC & -0.001 & -0.0009 & -0.0007 & -0.0009\\
+ & [0.001] & [0.001] & [0.001] & [0.001]\\
+PINC\_d & -0.006 & -0.015 & -0.037 & -0.038\\
+& [0.216] & [0.208] & [0.205] & [0.194]\\
+NTS & 0.216 & 0.225 & 0.253* & 0.259*\\
+& [0.013] & [0.141] & [0.137] & [0.146]\\
+TEST & 0.002 & 0.002 & 0.001 & 0.001\\
+& [0.002] & [0.002] & [0.002] & [0.002]\\
+TSEM & -0.017 & -0.017 & -0.017 & -0.018\\
+& [0.022] & [0.022] & [0.021] & [0.016]\\
+TEST\_TSEM & 0.0001 & 0.0001 & 0.0001 & 0.0001\\
+& [0.0002] & [0.0002] & [0.0002] & [0.0002]\\
+TNC & 0.007 & 0.006 & 0.002 & 0.003\\
+   & [0.008] & [0.010] & [0.009] & [0.008] \\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 217 & 216 & 216 & 216 \\
+Wald Chi & ---- & 18.57*** & 24.5*** & 24.7***\\
+F-stat & 2.59*** & ---- & ---- & ----\\
+$R^2$ & 0.096 & 0.095 & 0.068 & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. HROLS - Heteroskedasticity Robust Ordinary Leat Squares, MLE - Estimation of model assuming latent variable in stage 1.
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Determinants of Student Performance - Semester GPA (Dorm Semester)} \label{tab:res_sgpa_dorm}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & HROLS & IV & GMM & MLE\\
+\hline
+DORM\_S & 0.303*** & 0.490 & 0.973* & 0.693***\\
+   &  [0.096] & [0.642] & [0.526] & [0.201]\\
+\hline
+GENDER & -0.261*** & -0.283*** & -0.315*** & -0.297***\\
+ & [0.100] & [0.104] & [0.107] & [0.092]\\
+PINC & -0.0009 & -0.0007 & -0.0003 & -0.0006\\
+ & [0.001] & [0.001] & [0.001] & [0.001]\\
+PINC\_d & -0.010 & -0.036 & -0.097 & -0.055\\
+& [0.215] & [0.213] & [0.222] & [0.194]\\
+NTS & 0.199 & 0.215 & 0.239* & 0.227\\
+& [0.134] & [0.135] & [0.134] & [0.144]\\
+TEST & 0.002 & 0.001 & 0.0002 & 0.0008\\
+& [0.002] & [0.002] & [0.002] & [0.002]\\
+TSEM & -0.017 & -0.018 & -0.019 & -0.019\\
+& [0.022] & [0.022] & [0.021] & [0.016]\\
+TEST\_TSEM & 0.0001 & 0.0001 & 0.0002 & 0.0002\\
+& [0.0002] & [0.0003] & [0.0003] & [0.0002]\\
+TNC & 0.008 & 0.007 & 0.002 & 0.005\\
+   & [0.007] & [0.009] & [0.009] & [0.008] \\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 217 & 216 & 216 & 216\\
+Wald Chi & ---- & 18.01*** & 19.82*** & 30.32***\\
+F-stat & 2.96*** & ---- & ---- & ----\\
+$R^2$ & 0.107 & 0.099 & ---- & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. HROLS - Heteroskedasticity Robust Ordinary Leat Squares, MLE - Estimation of model assuming latent variable in stage 1.
+\end{tabular}}
+\end{table}
+
+\begin{sidewaystable}\textbf{\caption{First Stage Regressions - Determinants of Dormitory Living} \label{tab:fsr}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c c c c c c}
+\hline
+\hline
+& \multicolumn{3}{c}{CumGPA} & \multicolumn{3}{c}{SemGPA - Dorm\_e} & \multicolumn{3}{c}{SemGPA - Dorm\_s}\\
+& IV & GMM & MLE & IV & GMM & MLE & IV & GMM & MLE\\
+\hline
+GENDER & 0.004 & -0.001 & 0.067 & -0.013 & -0.021 & 0.012 & 0.054 & 0.050 & 0.341\\
+& [0.064] & [0.065] & [0.236] & [0.066] & [0.067] & [0.241] & [0.056] & [0.057] & [0.269]\\
+PINC & -0.0001 & 0.0001 & 0.0004 & -0.00001 & 0.0001 & 0.0005 & -0.0004 & -0.0004 & -0.001\\
+& [0.0005] & [0.0005] & [0.002] & [0.0006] & [0.0006] & [0.002] & [0.0006] & [0.0006] & [0.003]\\
+PINC\_d & 0.113 & 0.118 & 0.532 & 0.078 & 0.089 & 0.312 & 0.076 & 0.081 & 0.321\\
+& [0.188] & [0.188] & [0.487] & [0.181] & [0.180] & [0.498] & [0.140] & [0.141] & [0.582]\\
+NTS & -0.123** & -0.124** & -6.61 & -0.092* & -0.095* & -6.65 & -0.019 & -0.021 & -7.45\\
+& [0.052] & [0.052] & [8250] & [0.050] & [0.050] & [1994.5] & [0.041] & [0.041] & [2316.5]\\
+TEST & 0.003** & 0.003** & 0.017** & 0.003** & 0.003** & 0.021** & 0.002*** & 0.002*** & 0.032***\\
+& [0.001] & [0.001] & [0.007] & [0.001] & [0.001] & [0.008] & [0.0009] & [0.0009] & [0.009]\\
+TSEM & 0.005 & 0.005 & 0.075 & 0.005 & 0.004 & 0.110 & 0.004 & 0.004 & 0.180\\
+& [0.004] & [0.004] & [0.102] & [0.004] & [0.004] & [0.106] & [0.003] & [0.003] & [0.121]\\
+TEST\_TSEM & -0.0002** & -0.0002** & -0.001 & -0.0002** & -0.0002** & -0.002 &  -0.0002*** & -0.0002*** & -0.005***\\
+& [0.0001] & [0.0001] & [0.001] & [0.0001] & [0.0001] & [0.001] & [0.00008] & [0.00008] & [0.002]\\
+TNC & ---- & ---- & ---- & 0.010* & 0.009* & 0.044** & 0.004 & 0.004 & 0.039\\
+& & & & [0.006] & [0.006] & [0.023] & [0.004] & [0.004] & [0.028]\\
+DIST & 0.002** & 0.002*** & 0.007*** & 0.002** & 0.002*** & 0.007*** & 0.001* &  0.001** & 0.004***\\
+& [0.001] & [0.001] & [0.001] & [0.001] & [0.001] & [0.001] & [0.0006] & [0.0006] & [0.001]\\
+DEN & ---- & -0.216* & -1.079** & ---- & -0.202* & -0.904** & ---- & -0.089 & -0.515\\
+& & [0.112] & [0.456] &  & [0.118] & [0.440] &  & [0.090] & [0.502]\\
+\hline
+N & 226 & 226 & 226 & 216 & 216 & 216 & 216 & 216 & 216\\
+F-stat & 13.33*** & 12.53*** & ---- & 12.32*** & 11.77*** & ---- & 3.71*** & 3.37*** & ----\\
+Adj-$R^2$ & 0.252 & 0.265 & ---- & 0.266 & 0.276 & ---- & 0.113 & 0.113 & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{8.5in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Heteroskedasticity robust standard errors in brackets. MLE - Estimation of model assuming latent variable in stage 1.
+\end{tabular}}
+\end{sidewaystable}
+
+\end{document}
+
+
+

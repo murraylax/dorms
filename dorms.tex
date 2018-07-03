@@ -1,0 +1,396 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{.4in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} (\citeyear{#1})}
+\newcommand{\citeep}[1]{(\citename{#1} [\citeyear{#1}])}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\pagestyle{fancyplain}
+\lhead{}
+\chead{Effects of Dormitory Living on Student Performance}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{singlespace}
+\title{Estimating the Effects of Dormitory Living on Student Performance\thanks{We thank the participants of the 2009 Sourthern Economics Conference for their useful comments.  All errors are our own.}}
+\date{\today}
+\author{
+Pedro de Araujo\thanks{Department of Economics and Business, 14 E. Cache La Poudre Street, Colorado Springs, CO  80903.  \textit{Phone}: (719)389-6470. \textit{E-mail}: Pedro.deAraujo@ColoradoCollege.edu.}\\
+Colorado College
+\and
+James Murray\thanks{Department of Economics, 1725 State Street, La Crosse, WI  54601.  \textit{Phone}: (608) 406-4068\newline \textit{E-mail}: murray.jame@uwlax.edu}\\
+University of Wisconsin - La Crosse
+}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\abstract{Many large universities require freshman to live in dormitories on the basis that living on campus leads to better classroom performance and lower drop out incidence. Large universities also provide a number of academic services in dormitories such as tutoring and student organizations that encourage an environment condusive to learning.  A survey was administered to college students at a large state school to determine what impact dormitory living has on student performance.  We use a handful of instrumental variable strategies to account for the possibly endogenous decision to live on campus.  We find a robust result across model specifications and estimation techniques that on average, living on campus increases GPA by between 0.19 to 0.97. That is, the estimate for the degree of improvement to student performance caused by living on campus ranges between one-fifth to one full letter grade.  } \newline
+
+\noindent \textit{Keywords}: Student performance, dormitory, cross-section analysis, regression, instrumental variables. \\
+\noindent \textit{JEL classification}: C13, C21, I21.
+\end{singlespace}
+\end{titlepage}
+
+\section{Introduction}
+It is widely believed that students can acquire academic benefits from living on campus.  So much so, that many colleges and universities, ranging from small liberal arts colleges to large state universities, require students to live on campus during their first year with few exceptions.  Typically, students exempt from such a policy include students over the age of 25, students that are married and/or have children, and students in the military.  It has been suggested that living on campus causes students to be less likely to drop out or transfer, more likely to make academic progress, and more capable of achieving a high level of academic performance.
+
+Despite these common perceptions, there are inherent difficulties in estimating the impact living on campus has on student performance.  For the schools that require freshman students to live on campus, there is no effective control group.  Typically, freshman students that do not live on campus share other features with each other that set them apart as ``non-traditional'' students.  Many of these schools only require freshman to live on campus, so one might be tempted to compare the academic performance of sophomores that live on campus versus off campus.  The problem with such a strategy is that assignment of a sophomore student to on-campus versus off-campus housing is not random.  Rather it is the choice of an individual student, and this choice likely depends on his or her perceptions of the academic benefits he or she received while living on campus during the freshman year.  Students that did receive academic benefits are more likely to stay on campus, while students that did not are more likely to move off campus.  This is known as a self-selection problem in regression analysis.  As a consequence the explanatory variable, living on campus, is jointly determined with the dependent variable, some measure of academic performance.  This leads to biased and inconsistent estimates of the impact living on campus has on academic performance.
+
+Comparing the performance of on-campus versus off-campus students at schools that do not have an on-campus housing requirement can also lead to a self-selection problem.  The students (or parents of students) that perceive obtaining the greatest benefits of living on campus are more likely to choose to do so.  If the selection problem is ignored, it is not clear in which direction this would bias the results.  It is possible the students who perceive the most benefit from living on campus are most represented by motivated students that plan on reaping these benefits.  Or in the case the parents made this decision, the students living on campus may be more represented by parents that have high educational attainment and/or high expectations for their children.  In these cases, ignoring the self-selection problem would lead to an \textit{over-estimate} of the true impact living on campus has on student performance.  On the other hand, it is possible that the students (and/or parents of students) that perceive having the most to gain are largely represented by the students that are in most need of the possible benefits for successful academic performance.  In this case, ignoring the self-selection problem would lead to an \textit{under-estimate} of the true effect.
+
+The purpose of this paper is to quantify the impact living on campus has on student performance, as measured by grade point average (GPA), taking into careful consideration the possible self-selection problem.  We use two instrumental variables, (1) distance of hometown from campus and (2) a dummy variable for being denied housing due to space limitations.  These variables influence whether or not a student lives on campus, but are otherwise uncorrelated with outcomes for academic achievement.  This study uses survey data collected from sophomore students and above at Indiana University Purdue University Indianapolis (IUPUI) in Fall 2008 on current and past living situations, past semester and cumulative GPA, and student background characteristics.\footnote{Freshman students were excluded because the survey was administered in the Fall semester, a time in which freshman students are in their first semester and do not yet have any academic records.}
+
+Our main finding is that living on campus (whether only in past semesters or currently) increases a single semester and cumulative GPA by about a half of a letter grade. These results are robust to different instrumental variable strategies and different estimation methods.  Since self-selection problems are taken into account, these results have immediate policy implications: colleges and universities can expect that encouraging students to live on campus, even if just for a few semesters, on average will result in better academic performance throughout the students' college careers.
+
+\section{Related Literature}
+A substantial body of work explores the determinants of academic achievement with a subset of this literature focused on the impact students' residences. The findings are somewhat mixed. \citee{tsr1993} find that freshman students who live on campus have higher retention, a greater degree of academic progress, and higher academic performance. \citee{delucchi1993} examines a ``college town'' where most students who live off campus are still in close walking distance of their classes and university resources and finds no statistically significant difference in academic achievement between students that live on campus and off campus.  \citee{flowers2004} focuses exclusively on African American students and finds that living in dormitories positively influenced measures of personal and social development skills that he suggests are essential for successful academic achievement. \citee{pikekuh2005} find residence is important when they examine the experiences of first-generation students. They find that these students' characteristic low levels of academic engagement is a function living off-campus in addition to having lower educational aspirations.
+
+\citee{pascarella1993} find that students who live on campus achieve larger gains from college when in comes to measures of critical thinking and cognitive skills, but find less impact when it comes to direct measures of reading comprehension and mathematical skills.  This may suggest that the measurable gains to academic performance are not immediate, but may be delayed for a number of semesters.  If living on campus causes growth in a student's critical and cognitive thinking skills, one would expect these are permanent improvements which should pay off in higher academic achievement throughout the student's career.  For this reason, in the methodology section below, we include in the analysis how living on campus at any time in the past may affect \textit{cumulative} GPA.
+
+Further research on this subject is essential for two reasons.  First, most of these studies are somewhat dated; some results may be primarily applicable to only to situations that existed when the studies were conducted, some of these ten to twenty years ago.  Secondly, these studies do not explicitly address the self-selection problem discussed above, and therefore may not have relevant policy implications.
+
+The first of these criticisms, that simply too much time has progressed since many of these studies were completed, may seem somewhat weak at first, but it is a particularly important concern when it comes to education. As \citee{pt1991} point out, student characteristics and features of higher education have changed significantly over the years. The diversity of ethnic, cultural, and socio-economic backgrounds of students have expanded over the years; educational technology has developed substantially; and teaching and learning techniques have evolved. In fact all these characteristics of students and college learning have evolved tremendously since \citename{pt1991} pointed them out in \citeyear{pt1991}.  We should expect the dynamics between academic achievement and students' backgrounds, students' peers, and institutional characteristics have also changed.
+
+Addressing the second criticism above is the main contribution of this paper. Using instrumental variables we account for the possible self-selection problem, so statistically significant results from this study do indicate that living on campus \textit{causes} improved student performance.  Accounting for the self-selection problem, we can rule out that these effects can be explained by more academically capable and/or more highly motivated students being more likely to choose to live on campus than other students.
+
+Besides literature focusing on specifically on students' residences, there is other research on academic performance that shed some light as to why students who live on campus may perform better. Students that live on campus may be more likely to benefit from university provided resources. \citee{ts2001} find empirical evidence that increases in institutional spending leads to improvements in students' learning. However, they also find that increases in funding to academic support does not necessarily improve learning, suggesting that even non-academic resources on campus create an environment that fosters learning and good study habits. Such resources may include services provided in dormitories, but they also likely include resources that on-campus students may be more likely to benefit from, such as computer and information technology, university clubs, university sponsored varsity and intramural sports, exercise facilities, and other extra-curricular activities. 
+
+\section{Data and Methodology}
+
+Data was collected in Fall 2008 from students pursuing four-year baccalaureate degrees from IUPUI.  This population consists of 30,000 students, approximately 19,700 students under the age of 25 (the population that would most likely consider on-campus housing), and an on-campus housing capacity of only 1,107. Since there is such a small availability of on-campus housing, living on campus is not required. Most students do not live on campus, and those that do are primarily freshman. An electronic survey that takes about 15 minutes to complete was sent to 6,000 representative undergraduate students that were sophomore level or above that asked them a variety of questions on background characteristics, living situations, social habits, study habits, university involvement and academic performance. Although it is not a perfect measure of academic ability or the personal and educational gains from college, academic performance is measured by students' last semester and cumulative grade point average (GPA).  Of the students surveyed, 363 completed the questionnaire.  Approximately 15\% of the students who completed the survey had lived on campus during some part of their time at IUPUI which is consistent with the population of IUPUI students.
+
+The structural equation for the relationship we investigate is given by,
+\beq \label{eq:model} GPA_i = \alpha + \beta DORM_i + X_i'\Omega + \epsilon_i ,\label{eq:struct} \eeq
+where subscript $i$ denotes an individual student; $GPA_i$ is an individual student's cumulative GPA or previous single-semester GPA, each examined in turn; $DORM_i$ is a dummy variable that is equal to 1 if student $i$ has ever lived on campus, or if a student lived on campus last semester, each examined in turn.  The vector $X_i$ includes controls including gender, parents income ($PINC$), SAT/ACT percentiles ($TEST$), the total number of semesters the student has been enrolled for classes at IUPUI ($TSEM$), a dummy if the student is older than 25 ($NTS$), and an interaction between $TSEM$ and $TEST$.\footnote{Only a dummy for being over the age of 25 and not actual age was included in the regression for two reasons.  First, any linear relationship between age and academic performance likely diminishes by the time students reach age 25, an age which typically categorizes a person as a non-traditional student.  Secondly, for students under the age of 25, the number of total semesters the student had attended IUPUI and their age was very highly correlated.}  The total number of credit hours a student was taking in the previous semester ($TNC$) is also included in the regressions where the dependent variable is previous semester GPA.
+
+When measuring parents' combined income using a survey administered to students, the students were asked to identify one of several income range categories that described their parents income.  Each category included a range of \$20,000, and the final category was ``More than \$200,000''.  The PINC variable is coded using the  midpoint from each category.  In the event the student selected the final category, the midpoint from the second highest category was entered for PINC, and a dummy variable, $PINC\_d$ was set equal to 1.  The interaction term between ACT/SAT test and total semesters in school is included to account for the possibility that performance on standardized tests taken in high school are weaker predictors of success in college the longer the student has been in school.
+
+We estimate three specifications of the model.  In Specification 1 we regress cumulative GPA on ever having lived on-campus.  This specification is motivated by the literature cited above that suggests many of the benefits one obtains from living on campus should be long lasting.  These benefits include growth in cognitive thinking, growth in critical thinking, and improved interpersonal skills.  If students acquire these skills while living on campus during their freshman year, but subsequently move off campus - which is typical at IUPUI - we should still see benefits to these students cumulative GPA during their junior and senior years.  Specification 2 is similar except we regress only the previous semester GPA (not cumulative - only the average for the courses taken in the previous semester) on ever having lived in a dorm.  Finally, Specification 3 is most like the previous literature.  Here we regress semester GPA on whether or not a student is currently living in the dorm.  This specification captures instantaneous benefits to living in a dorm.  Such benefits may be greater access to academic resources such as computer technology, libraries, tutors, and even professor office hours.  
+
+Difficulty arises if the self-selection problem causes $E(\epsilon_i|DORM_i) \neq 0$, that is if the choice of living on-campus is endogenously determined with students' academic success.  This happens when characteristics that influence academic success, like motivation, parental influence, and incoming ability, also influence the decision to live on-campus.  One way to deal with an endogenous regressor is to use the control function approach \citeep{trivedi}.  That is, as long as a subset of our control variables that include students' abilities and motivation capture the endogenous decision to live on campus, the OLS estimates are consistent.  There are two such variables in the model, ACT/SAT percentiles and parents income, so it is possible that OLS is appropriate.  We will formally test this possibility in the next section.  
+
+In the case we still have an endogeneity problem, we employ two instrumental variables: distance of hometown from campus ($DIST$) and a dummy variable for whether or not students were denied access to dormitories due to lack of space ($DEN$).  When dealing with more instrumental variables than endogenous variables, there are multiple estimation strategies to consider.  In addition to estimating the three specifications of the model using OLS, we employ the three instrumental variable estimation techniques.  The first strategy (IV) we use only distance from campus as an instrumental variable and conduct a standard just-identified instrumental variable regression.  The second strategy we consider is to use both instruments and estimate the model using generalized method of moments (GMM), a strategy which identifies the coefficients using the moment condition that both instrumental variables are orthogonal to the error term.  The benefit of this technique is that while it uses both instruments and assumes the structure in equation (\ref{eq:model}), it does not impose any other structure on the error term, such as normality or homoskedasticity.  The drawback inherent with GMM approaches in general, is that without further structure it can be difficult to obtain statistical significance.  Finally, we estimate the model using a two stage maximum likelihood (MLE) approach.  In the first stage we regress the endogenous variable, $DORM$, against the instruments and control variables, which uses a probit since it involves a dummy dependent variable.  The second stage regresses GPA on the predicted values of $DORM$ from the first stage, along with the control variables.  This final approach imposes restrictions of normality and homoskedasticity on the error term.
+
+\section{Results}
+
+The results for Specifications 1, 2, and 3, are given in Tables \ref{tab:res_cgpa}, \ref{tab:res_sgpa_dorme}, \ref{tab:res_sgpa_dorm}, respectively.\footnote{Weak instrument tests (Stock and Yogo test and joint F test) have been performed and there is enough evidence that both instruments are jointly not weak in specification 1. This is not the case in specifications 2 and 3 (there is evidence that they are not weak only if we allow for a 20 to 30\% relative OLS bias in the coefficient estimate).  We show later these are the specifications where there is the least amount of evidence of endogeneity.}  We have a quite robust result: with the exception of the just-identified IV technique, all other estimation strategies result is a positive, statistically significant effect of living on campus on student performance, for every specification in the model.  The results in Table \ref{tab:res_cgpa} suggest the increase of cummulative GPA obtained from ever having lived on campus ranges from 0.2 to about 0.5.  This is a large enough increase to actually recieve a different letter on one's transcript (for example a B versus a B-, or a B+ versus a B-).  Other controls that are statistically significant include $GENDER$, women on average perform better than men; and $TEST$, successful performance on standardized tests in high school helps explain success in college.  Though, while the coefficient on $TEST$ is statistically significant, it has a relatively small impact on GPA.
+
+Comparing results across estimation techniques illustrates the consequences of ignoring the self-selection problem.  When accounting for endogeneity using GMM and MLE, the predicted increase on GPA is close to 0.5.  When ignoring the problem, the point estimate decreases to around 0.2.  This suggests the students that choose to live on campus are more highly represented by students with lower incoming academic ability, i.e. students that can get the most benefit from living on campus.  Ignoring the endogenous decision to live on campus results in these students bringing down the average performance of those living in the dorm, leading to a possibly incorrect conclusion that living in dorms has a relatively small impact on GPA.  
+
+The results for Specification 2 in Table \ref{tab:res_sgpa_dorme} largely mirror the results for Specification 1.  Having ever lived on campus causes an increase in both semester GPA and cumulative GPA.  Table \ref{tab:res_sgpa_dorm} shows the results for Specification 3, the instantaneous effects of living on campus.  The instantaneous effects are quite large.  The instrumental variable methods GMM and MLE reveal that students that are currently living on campus are able to achieve a GPA that is between 0.7 to 1.0 higher due to living on campus.  This may be due to increased utilization of academic resources provided on campus, positive peer influences from other students living in dorms, or the organization, structure, and activities that dormitories provide their residents to encourage an environment conducive to learning.
+
+In an effort to determine which estimation strategy is most appropriate we conduct Durbin-Wu-Hausman tests for endogeneity.  The null hypothesis for this test is no endogeneity, so failure to reject the null hypothesis may imply that a self-selection problem is not present, or it is accounted for by one or more of the control variables.  Failure to reject the null hypothesis is not very conclusive, however, as it may be simply due to lack of statistical evidence.  Rejection of the null hypothesis implies that endogeneity is a problem, OLS results are inconsistent, and the instrumental variable strategies are more appropriate.  To determine how well the controls can account for the choice to live on campus, the test is run under four cases: (1) with all controls included in the model, (2) with all controls except ACT/SAT test percentiles ($TEST$), (3) with all controls except parents income ($PINC$ and $PINC\_d$), and (4) with all controls excluding both ACT/SAT test percentiles and income.  
+
+The p-values for the Durbin-Wu-Hausman tests are reported in Table \ref{tab:endo}.  The first column shows when using all controls, for all but one specification and estimation strategy choice, the exogeneity for $DORM$ cannot be rejected.  In Specification 1, when excluding $TEST$ (whether only $TEST$ [column 2], or both $TEST$ and $PINC$ [column 4]) exogeneity is strongly rejected.  These results suggest a self-selection issue is certainly present, but using incoming ability as measured by ACT/SAT test scores as a control in the regression may account for much of the problem.  The p-values for Specification 2 and 3 that use single semester GPA are often not statistically significant, indicating endogeneity may not be a problem in these specifications.
+
+\section{Conclusion}
+Despite a widely held belief that living on campus helps students perform better in school, a look at the literature reveals mixed results, and a failure in these studies to account for the possible endogenous decision students make on whether or not to live on campus.  Factors that influence how well a student can perform likely also influence a particular student's choice on where to live.  In addition to estimating a standard model using OLS, we carefully account for endogeneity using two instrumental variables: distance of hometown from campus and a dummy variable for being denied on-campus housing due to space.  To ensure robustness of the results, we estimate the model using three instrumental variable procedures, and examine the evidence for endogeneity in each.  For nearly every estimation strategy and specification examined, we find that living on campus does cause an increase in student performance.  We find evidence for an instantaneous effect.  Living on campus during the semester before the survey was administered caused an average increase in semester GPA of nearly one full letter grade during that same time.  There is also evidence that living on campus as long term benefits, even after students subsequently move off campus.  Estimation results indicate having lived on campus during any time in the past caused an increase in semester GPA and cumulative GPA of almost half a letter grade.  Because care was taken to account for the self-selection problem, and because the results are robust across specifications and estimation strategies, these findings have immediate policy implications: requiring or otherwise encouraging students to live an campus can result in improved academic performance.
+
+\newpage
+\begin{singlespace}
+\nocite{*}
+\bibliographystyle{econometrica}
+\bibliography{dorms}
+\end{singlespace}
+
+\newpage
+
+\begin{table}\textbf{\caption{Specification 1 - Cumulative GPA / Having Ever Lived On-Campus} \label{tab:res_cgpa}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & OLS & IV & GMM & MLE\\
+\hline
+DORM\_E & 0.210** & 0.312* & 0.448*** & 0.431***\\
+   &  [0.087] & [0.187] & [0.140] & [0.156]\\
+\hline
+GENDER & -0.200** & -0.214** & -0.234*** & -0.220***\\
+ & [0.085] & [0.088] & [0.088] & [0.085]\\
+PINC & -0.001 & -0.001 & -0.001 & -0.001\\
+ & [0.0009] & [0.0009] & [0.0009] & [0.0009]\\
+PINC\_d & 0.065 & 0.042 & -0.002 & 0.023\\
+& [0.183] & [0.200] & [0.198] & [0.183]\\
+NTS & 0.027 & 0.056 & 0.078 & 0.084\\
+& [0.137] & [0.152] & [0.150] & [0.140]\\
+TEST & 0.004** & 0.003* & 0.003* & 0.003*\\
+& [0.001] & [0.001] & [0.001] & [0.001]\\
+TSEM & -0.010 & -0.011 & -0.011 & -0.013\\
+& [0.014] & [0.016] & [0.016] & [0.014]\\
+TEST\_TSEM & -0.0001 & -0.0008 & -0.00006 & -0.00005\\
+& [0.0002] & [0.0002] & [0.0002] & [0.0002]\\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 227 & 226 & 226 & 226\\
+Wald Chi & n.a. & 29.42*** & 41.81*** & 32.23***\\
+F-stat & 3.78*** & ---- & ---- & ---- \\
+$R^2$ & 0.122 & 0.113 & 0.088 & ---- \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. 
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Specification 2 - Semester GPA / Having Ever Lived On-Campus} \label{tab:res_sgpa_dorme}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & OLS$^{1}$ & IV & GMM & MLE\\
+\hline
+DORM\_E & 0.185* & 0.221 & 0.416** & 0.410**\\
+   &  [0.095] & [0.289] & [0.212] & [0.166]\\
+\hline
+GENDER & -0.247** & -0.254*** & -0.262 & -0.257***\\
+ & [0.100] & [0.099] & [0.100] & [0.091]\\
+PINC & -0.001 & -0.0009 & -0.0007 & -0.0009\\
+ & [0.001] & [0.001] & [0.001] & [0.001]\\
+PINC\_d & -0.006 & -0.015 & -0.037 & -0.038\\
+& [0.216] & [0.208] & [0.205] & [0.194]\\
+NTS & 0.216 & 0.225 & 0.253* & 0.259*\\
+& [0.013] & [0.141] & [0.137] & [0.146]\\
+TEST & 0.002 & 0.002 & 0.001 & 0.001\\
+& [0.002] & [0.002] & [0.002] & [0.002]\\
+TSEM & -0.017 & -0.017 & -0.017 & -0.018\\
+& [0.022] & [0.022] & [0.021] & [0.016]\\
+TEST\_TSEM & 0.0001 & 0.0001 & 0.0001 & 0.0001\\
+& [0.0002] & [0.0002] & [0.0002] & [0.0002]\\
+TNC & 0.007 & 0.006 & 0.002 & 0.003\\
+   & [0.008] & [0.010] & [0.009] & [0.008] \\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 217 & 216 & 216 & 216 \\
+Wald Chi & ---- & 18.57*** & 24.5*** & 24.7***\\
+F-stat & 2.59*** & ---- & ---- & ----\\
+$R^2$ & 0.096 & 0.095 & 0.068 & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets.\\
+$^1$OLS is computed using heteroskedastic robust standard errors.
+
+
+\end{tabular}}
+\end{table}
+
+\begin{table}\textbf{\caption{Specification 3 - Semester GPA / Semester On-Campus} \label{tab:res_sgpa_dorm}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+ & OLS$^{1}$ & IV & GMM & MLE\\
+\hline
+DORM\_S & 0.303*** & 0.490 & 0.973* & 0.693***\\
+   &  [0.096] & [0.642] & [0.526] & [0.201]\\
+\hline
+GENDER & -0.261*** & -0.283*** & -0.315*** & -0.297***\\
+ & [0.100] & [0.104] & [0.107] & [0.092]\\
+PINC & -0.0009 & -0.0007 & -0.0003 & -0.0006\\
+ & [0.001] & [0.001] & [0.001] & [0.001]\\
+PINC\_d & -0.010 & -0.036 & -0.097 & -0.055\\
+& [0.215] & [0.213] & [0.222] & [0.194]\\
+NTS & 0.199 & 0.215 & 0.239* & 0.227\\
+& [0.134] & [0.135] & [0.134] & [0.144]\\
+TEST & 0.002 & 0.001 & 0.0002 & 0.0008\\
+& [0.002] & [0.002] & [0.002] & [0.002]\\
+TSEM & -0.017 & -0.018 & -0.019 & -0.019\\
+& [0.022] & [0.022] & [0.021] & [0.016]\\
+TEST\_TSEM & 0.0001 & 0.0001 & 0.0002 & 0.0002\\
+& [0.0002] & [0.0003] & [0.0003] & [0.0002]\\
+TNC & 0.008 & 0.007 & 0.002 & 0.005\\
+   & [0.007] & [0.009] & [0.009] & [0.008] \\
+\hline
+Instruments & ---- & DIST & DIST & DIST \\
+            & ---- & ---- & DEN & DEN \\
+\hline
+N & 217 & 216 & 216 & 216\\
+Wald Chi & ---- & 18.01*** & 19.82*** & 30.32***\\
+F-stat & 2.96*** & ---- & ---- & ----\\
+$R^2$ & 0.107 & 0.099 & ---- & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{4.05in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. \\
+$^1$OLS is computed using heteroskedastic robust standard errors.
+\end{tabular}}
+\end{table}
+
+
+\begin{table}\textbf{\caption{P-Values from Endogeneity Tests (Null: no endogeneity)} \label{tab:endo}}
+\centering
+\vspace{0.25pc}
+\begin{tabular}{l|c c c c}
+\hline
+\hline
+\multicolumn{5}{c}{Specification 1 - Cumulative GPA / Having Ever Lived On-Campus} \\
+Estimation Strategy & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+IV & 0.606 & 0.074* & 0.585 & 0.042**\\
+GMM & 0.366 & 0.030** & 0.368 & 0.018** \\
+MLE & 0.115 & 0.043** & 0.118 & 0.053* \\
+\hline
+\hline
+\multicolumn{5}{c}{Specification 2 - Semester GPA / Having Ever Lived On-Campus} \\
+Estimation Strategy & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+IV & 0.893 & 0.374 & 0.801 & 0.296\\
+GMM & 0.670 & 0.251 & 0.587 & 0.201 \\
+MLE & 0.133 & 0.182 & 0.090* & 0.139\\
+\hline
+\hline
+\multicolumn{5}{c}{Specification 3 - Semester GPA / Semester On-Campus} \\
+Estimation Strategy & Full Model & w/o TEST  & w/o PINC & w/o TEST and PINC\\
+\hline
+IV & 0.801 & 0.288 & 0.722 & 0.213\\
+GMM & 0.585 & 0.160 & 0.586 & 0.143\\
+MLE & 0.072* & 0.293 & 0.071* & 0.169\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{6.25 in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. 
+\end{tabular}}
+\end{table}
+
+\begin{comment}
+
+\begin{table}\textbf{\caption{Breusch-Pagan/Cook-Weisberg Heteroskedasticity Test} \label{tab:het}}
+\centering
+\vspace{0.25pc}
+\begin{tabular}{l l}
+\hline
+\hline
+\multicolumn{1}{c}{Specification} & p-value \\
+\hline
+Cumulative GPA and Dorm Ever & 0.196 \\
+Semester GPA and Dorm Ever & 0.005*** \\
+Semester GPA and Semester Dorm & 0.003*** \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{3.25 in}}
+Note: Null: homoskedasticity. *** significant at 1\%.
+\end{tabular}}
+\end{table}
+
+\begin{sidewaystable}\textbf{\caption{First Stage Regressions - Determinants of Dormitory Living} \label{tab:fsr}}
+  \vspace{0.25pc}
+  \centering
+\begin{tabular}{l|c c c c c c c c c}
+\hline
+\hline
+& \multicolumn{3}{c}{CumGPA} & \multicolumn{3}{c}{SemGPA - Dorm\_e} & \multicolumn{3}{c}{SemGPA - Dorm\_s}\\
+& IV & GMM & MLE & IV & GMM & MLE & IV & GMM & MLE\\
+\hline
+GENDER & 0.004 & -0.001 & 0.067 & -0.013 & -0.021 & 0.012 & 0.054 & 0.050 & 0.341\\
+& [0.064] & [0.065] & [0.236] & [0.066] & [0.067] & [0.241] & [0.056] & [0.057] & [0.269]\\
+PINC & -0.0001 & 0.0001 & 0.0004 & -0.00001 & 0.0001 & 0.0005 & -0.0004 & -0.0004 & -0.001\\
+& [0.0005] & [0.0005] & [0.002] & [0.0006] & [0.0006] & [0.002] & [0.0006] & [0.0006] & [0.003]\\
+PINC\_d & 0.113 & 0.118 & 0.532 & 0.078 & 0.089 & 0.312 & 0.076 & 0.081 & 0.321\\
+& [0.188] & [0.188] & [0.487] & [0.181] & [0.180] & [0.498] & [0.140] & [0.141] & [0.582]\\
+NTS & -0.123** & -0.124** & -6.61 & -0.092* & -0.095* & -6.65 & -0.019 & -0.021 & -7.45\\
+& [0.052] & [0.052] & [8250] & [0.050] & [0.050] & [1994.5] & [0.041] & [0.041] & [2316.5]\\
+TEST & 0.003** & 0.003** & 0.017** & 0.003** & 0.003** & 0.021** & 0.002*** & 0.002*** & 0.032***\\
+& [0.001] & [0.001] & [0.007] & [0.001] & [0.001] & [0.008] & [0.0009] & [0.0009] & [0.009]\\
+TSEM & 0.005 & 0.005 & 0.075 & 0.005 & 0.004 & 0.110 & 0.004 & 0.004 & 0.180\\
+& [0.004] & [0.004] & [0.102] & [0.004] & [0.004] & [0.106] & [0.003] & [0.003] & [0.121]\\
+TEST\_TSEM & -0.0002** & -0.0002** & -0.001 & -0.0002** & -0.0002** & -0.002 &  -0.0002*** & -0.0002*** & -0.005***\\
+& [0.0001] & [0.0001] & [0.001] & [0.0001] & [0.0001] & [0.001] & [0.00008] & [0.00008] & [0.002]\\
+TNC & ---- & ---- & ---- & 0.010* & 0.009* & 0.044** & 0.004 & 0.004 & 0.039\\
+& & & & [0.006] & [0.006] & [0.023] & [0.004] & [0.004] & [0.028]\\
+DIST & 0.002** & 0.002*** & 0.007*** & 0.002** & 0.002*** & 0.007*** & 0.001* &  0.001** & 0.004***\\
+& [0.001] & [0.001] & [0.001] & [0.001] & [0.001] & [0.001] & [0.0006] & [0.0006] & [0.001]\\
+DEN & ---- & -0.216* & -1.079** & ---- & -0.202* & -0.904** & ---- & -0.089 & -0.515\\
+& & [0.112] & [0.456] &  & [0.118] & [0.440] &  & [0.090] & [0.502]\\
+\hline
+N & 226 & 226 & 226 & 216 & 216 & 216 & 216 & 216 & 216\\
+F-stat & 13.33*** & 12.53*** & ---- & 12.32*** & 11.77*** & ---- & 3.71*** & 3.37*** & ----\\
+Adj-$R^2$ & 0.252 & 0.265 & ---- & 0.266 & 0.276 & ---- & 0.113 & 0.113 & ----\\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{8.5in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Heteroskedasticity robust standard errors in brackets. MLE - Estimation of model assuming latent variable in stage 1.
+\end{tabular}}
+\end{sidewaystable}
+
+\end{comment}
+
+\end{document}
+
+
+

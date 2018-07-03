@@ -1,0 +1,381 @@
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{verbatim}
+
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{pgf}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+
+\newcommand{\ft}[1]{
+  \frametitle{\begin{tabular}{p{4.2in}r} \textcolor{white}{#1} & \small{\insertframenumber / \inserttotalframenumber} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\eft}[1]{
+  \frametitle{\begin{tabular}{p{4in}r} \textcolor{white}{#1} & \small{\hyperlink{f:questions}{\beamergotobutton{GO BACK}}} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\stepinv}{\setbeamercovered{invisible}}
+\newcommand{\stopinv}{\setbeamercovered{transparent=18}}
+\newcommand{\uncoverinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{#1}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\ans}[1]{\textcolor{blue}{#1}}
+\newcommand{\ansinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{\textcolor{blue}{#1}}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\setinv}{\setbeamercovered{invisible}}
+\newcommand{\setvis}{\setbeamercovered{transparent=18}}
+\newcommand{\centerpic}[2]
+{
+  \begin{center}
+  \includegraphics[#1]{#2}
+  \end{center}
+}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+%\definecolor{light}{rgb}{1.0,0.33,0.33}
+\definecolor{light}{rgb}{1.0,0.5,0.5}
+\newcommand{\hl}[1]{\alt<#1>{\rowcolor{light}\hspace*{-2.1pt}} {\hspace*{-2.1pt}} }
+
+\definecolor{mycolor}{rgb}{0.6,0.0,0.0}
+\usecolortheme[named=mycolor]{structure}
+
+\title[Academic Benefits of Living On Campus]{Academic Benefits of Living On Campus}
+\subtitle{}
+\author[James Murray, University of Wisconsin - La Crosse]{James Murray\\Department of Economics\\University of Wisconsin - La Crosse}
+\date{July 1, 2010}
+
+\begin{document}
+
+\frame{\titlepage \setcounter{framenumber}{0}}
+\section{Introduction}
+\subsection{Purpose}
+\frame
+{
+  \ft{Purpose}
+  \be
+  \item Does living on campus lead to higher student performance?
+    \bi
+    \item Immediate effects
+    \item Delayed/permanent effects
+    \item Companion paper: de Araujo and Murray (2010), ``Estimating Effects of Dormitory Living on Student Performance,'' \textit{Economics Bulletin}.
+    \ei
+  \item Through what channels is living on campus likely to lead to higher student performance?
+    \bi
+    \item University resources
+    \item Peer effects
+    \ei
+  \ee
+}
+
+\subsection{Academic Benefits}
+\frame
+{
+  \ft{Literature: Benefits of Living on Campus}
+  \bi
+  \item Positive impact for freshman: Thompson, et. al. (1993).
+  \item Critical thinking skills: Pascarella et. al. (1993): 
+  \item Social development skills: Flowers (2004).
+  \item No difference: Delucchi (1993).
+  \item Environment: Schroeder and Maple (1994), Schrager (1986)
+  \ei
+}
+
+\subsection{Campus Resources}
+\frame
+{
+  \ft{Literature: Campus Resources}
+  \bi
+  \item Faculty/Student interaction
+    \bi
+    \item Pascarella and Terenzini (1991)
+    \item Astin (1993)
+    \item Kuh and Hu (2001a)
+    \ei
+  \item Information technology: Kuh and Hu (2001b)
+  \item Institutional spending / not necessarily academic support: Toutkoushian and Smart (2001)
+  \ei
+}
+
+\subsection{Peer Influences}
+\frame
+{
+  \ft{Literature: Peer Influences}
+  \bi
+  \item Positive influences are dominant: Henderson et. al. (1978).
+  \item Negative influences carry through college: Betts and Morell (1999).
+  \item ``Average'' students most susceptible to peer influence: Zimmerman (2003).
+  \ei
+}
+
+\section{Academic Benefits}
+\subsection{Data}
+\begin{frame}
+  \ft{Data}
+  \begin{block}{Population}
+  \bi
+  \item Undergraduate students at Indiana University Purdue University - Indianapolis.
+  \item Approximately 19,700 students under age 25.
+  \item Extremely limited on-campus housing capacity: 1,107.
+  \item No on-campus housing requirements.
+  \ei
+  \end{block}
+
+  \begin{block}{Sample}
+  \bi
+  \item Electronic survey given to 6,000 undergraduate in Fall 2008.
+  \item 363 completed questionnaire.
+  \item Questions included: living situation, social habits, study habits, campus resource utilization, personal background, academic background.
+  \ei
+  \end{block}
+\end{frame}
+
+\frame
+{
+  \ft{Variables}
+  \begin{block}{Measure of academic performance}
+    \bi
+    \item Spring 2008 Semester GPA.
+    \item Cumulative GPA through Spring 2008.
+    \ei
+    ~~~(Each examined in turn)
+  \end{block}
+
+  \begin{block}{Living on campus dummy}
+    \bi
+    \item Student lived on campus in Spring 2008.
+    \item Student lived on campus during an part of their time at IUPUI.
+    \ei
+    ~~~(Each examined in turn)
+  \end{block}
+}
+
+\frame{
+  \ft{Variables}
+  \begin{block}{Instrumental variables}
+   \bi
+   \item Distance of hometown from campus - positively related to whether a student lived on-campus.
+   \item On-campus housing turned down due to lack of available space (dummy).
+   \ei
+  \end{block}
+
+  \begin{block}{Controls}
+    \bi
+    \item Gender
+    \item Parents' income
+    \item Non-traditional student dummy (age$>$25)
+    \item ACT/SAT percentiles
+    \item Number of semesters completed
+    \item Number of credits in Spring 2008.
+    \ei
+  \end{block}
+}
+
+\subsection{Estimation}
+\frame
+{
+  \ft{Estimation}
+  \begin{block}{Estimation Procedure}
+    \be
+    \item OLS
+    \item Just-identified using only distance from campus.
+    \item GMM using both instruments.
+    \item Two-stage MLE (first stage probit) using both instruments.
+    \ee
+  \end{block}
+
+  \begin{block}{Three Specifications}
+    \be
+    \item Cumulative GPA on DORM\_EVER.
+    \item Spring Semester 2008 GPA on DORM\_EVER.
+    \item Spring Semester 2008 GPA on DORM\_S08.
+    \ee
+  \end{block}
+}
+
+\subsection{Results}
+\frame
+{
+  \ft{Results}
+  \footnotesize{
+  \begin{center}
+  \begin{tabular}{cccc}
+    \multicolumn{4}{c}{\textbf{Coefficient on Living on Campus Dummy}}\\\\\hline\hline
+    \multicolumn{4}{c}{Cumulative GPA on DORM\_EVER} \\ \hline
+    ~~~~~~OLS~~~~~~ & ~~~~~~IV~~~~~~ & ~~~~~~GMM~~~~~~ & ~~~~~~MLE~~~~~~ \\ \hline
+    0.210** & 0.312* & 0.448*** & 0.431***\\
+    $[0.087]$ & [0.187] & [0.140] & [0.156] \\ \hline \hline
+    \multicolumn{4}{c}{Spring 2008 Semester GPA on DORM\_EVER} \\ \hline
+    OLS & IV & GMM & MLE \\ \hline
+    0.185* & 0.221 & 0.416** & 0.410**\\
+    $[0.095]$ & [0.289] & [0.212] & [0.166]\\ \hline\hline
+    \multicolumn{4}{c}{Spring 2008 Semester GPA on DORM\_S08} \\ \hline
+    OLS & IV & GMM & MLE \\ \hline
+    0.303*** & 0.490 & 0.973* & 0.693*** \\
+    $[0.096]$ & [0.642] & [0.526] & [0.201] \\\hline\hline
+    \multicolumn{4}{l}{\scriptsize{Standard errors in parenthesis.}}\\
+    \multicolumn{4}{l}{\scriptsize{Results from de Araujo and Murray, \textit{Economics Bulletin}, 2010.}}
+  \end{tabular}
+  \end{center}
+  }
+}
+
+\section{Channels}
+\subsection{Data}
+\frame
+{
+  \ft{Channel Variables}
+  \begin{block}{University Provided Resources: Fall 2008}
+    \bi
+    \item Use of fitness resources (hours per week -- Tobit).
+    \item Use of tutors (hours per week - Robust OLS).
+    \item Engagement in extra-curricular activities (dummy - Probit).
+    \item Hours using campus resources (hours per week - Tobit).
+    \item Hours studying (hours per week - Tobit).
+    \ei
+  \end{block}
+
+  \begin{block}{Peer-Influenced Variables: Fall 2008}
+    \bi
+    \item Number of drinks per week (Robust OLS)
+    \item Ever used drugs while at IUPUI (Probit)
+    \item Study with roommates (hours per week - Tobit)
+    \item Study with classmates (hours per week - Tobit)
+    \ei
+  \end{block}
+}
+
+\subsection{Estimation}
+\frame{
+  \ft{Estimation}
+  \bi
+  \item Explanatory Variables:
+    \bi
+    \item DORM\_PAST: Whether or not student lived on campus in the past.
+    \item DORM\_F08: Whether or not student lived on campus in Fall 2008 semester.\newline (Both included simultaneously)
+    \item Same set of controls.
+    \ei
+  \item No IV estimation yet.
+  \ei
+}
+
+\subsection{Results}
+\frame{
+  \ft{Results}
+  \footnotesize{
+    \begin{center}
+      \begin{tabular}{l|ccccc} 
+        \multicolumn{6}{c}{\textbf{Campus Resource Variables}} \vspace*{0.4pc}\\ \hline\hline
+         & FITNESS & TUTORS & XTCUR & CAMPUS & STUDY  \\ 
+         & Tobit & Robust OLS & Probit & Tobit & Tobit \\ \hline
+        DORM\_F08	&	-3.687**	&	0.153	&	0.788*	&	-6.613***	&	-1.702\\
+	&	[1.459]	&	[0.136]	&	[0.429]	&	[2.066]	&	[1.55]	\\ \hline
+        DORM\_PAST	&	0.023	&	-0.279**	&	0.937***	&	0.916	&	1.296\\
+	&	[1.069]	&	[0.11]	&	[0.268]	&	[1.532]	&	[1.317]	\\ \hline
+        N & 207 & 225 & 232 & 231 & 225 \\
+        F-stat & 1.67 & 1.46 & --- & 3.09*** & 1.46  \\
+        Wald Stat & --- & --- & 50.45*** & --- & ---  \\
+        (Pseudo) $R^2$ & 0.0163 & 0.0206 & 0.1663 & 0.0228 & 0.0025 \\ \hline\hline
+      \end{tabular}
+  \end{center}
+    \bi
+    \item Except for extra-curricular activities, significant values have opposite than expected signs.
+    \item Engaging in extra-curricular activities is an immediate and permanent effect.
+    \ei
+  }
+}
+
+\frame{
+  \ft{Results}
+  \footnotesize{
+    \begin{center}
+      \begin{tabular}{l|cccc}
+        \multicolumn{5}{c}{\textbf{Peer-Influenced Variables}} \vspace*{0.4pc} \\ \hline\hline
+        & DRINKS & DRUGS & STUDCLASS & STUDROOM  \\ 
+        & Robust OLS & Probit & Tobit & Tobit \\ \hline
+        DORM\_F08	&	-0.186	&	0.200	&	0.051	&	2.077	\\
+	&	[0.183]	&	[0.389]	&	[1.156]	&	[1.803]	\\ 
+        DORM\_PAST	&	-0.341***	&	0.204	&	2.313***	&	2.467**	\\	
+        &	[0.131]	&	[0.312]	&	[0.812]	&	[1.218]	\\ \hline
+        N & 226 & 230 & 231 & 230 \\
+        F-stat & 4.58*** & --- & 2.37** & 3.50***  \\
+        Wald Stat & --- & 26.98*** & --- & --- \\
+        (Pseudo) $R^2$ & 0.1322 & 0.1140 & 0.0272 & 0.0601  \\ \hline \hline
+      \end{tabular}
+  \end{center}
+  }
+  Delayed but significant long term effects:
+  \bi
+  \item Less likely to drink.
+  \item More likely to study with peers. 
+  \ei
+}
+
+\section{Conclusion}
+\subsection{Summary}
+\frame
+{
+  \ft{Conclusion}
+  \bi
+  \item Find significant statistical evidence that living on campus improves student performance.
+    \bi
+    \item Immediate effect: estimates range from 0.303 (OLS) to 0.973 (IV/GMM) increase in semester GPA.
+    \item Permanent effect: estimates range from 0.210 (OLS) to 0.448 (IV/GMM) increase in cumulative GPA.
+    \ei
+  \item Channels:  
+    \bi
+    \item More likely to develop productive relationships with peers.
+    \item Consume less alcohol in \textit{subsequent} semesters.
+    \item More likely to participate in extra-curricular activities, stay involved.
+    \item Largely failed to identify channels to explain an immediate effect.
+    \ei
+  \ei
+}
+
+\subsection{Weaknesses / Next Steps}
+\frame
+{
+  \ft{Weaknesses / Next Steps}
+  \bi
+  \item Non-significant campus resources
+    \bi
+    \item Nothing was significant
+    \item Very low R-squared, insignificant F-stat.
+    \ei
+  \item Next steps:
+    \bi
+    \item Should include both current and past living situation simultaneously in academic benefits regressions.
+    \item Use instrumental variables to account for endogeneity in channels regressions.
+    \item Investigate more channels: living with a roommate that drinks, attend faculty office hours.
+    \ei
+  \ei
+}
+
+
+
+\end{document}
+

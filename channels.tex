@@ -1,0 +1,221 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+\usepackage{multirow}
+
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{.4in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6in}
+\setlength{\textheight}{9in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} \citeyear{#1}}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\pagestyle{fancyplain}
+\lhead{}
+\chead{
+Channels for Improved Performance from Living On Campus
+}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{singlespace}
+\title{
+Channels for Improved Performance from Living On Campus
+}
+\date{\today}
+
+\author{
+Pedro de Araujo\footnote{\textit{Mailing address}: 14 E. Cache La Poudre Street, Colorado Springs, CO  80903.  \textit{Phone}: (719)389-6470.\newline  \textit{E-mail}: Pedro.deAraujo@ColoradoCollege.edu.}\\Department of Economics and Business\\Colorado College \\\\James Murray\footnote{\textit{Mailing address}: 1725 State St., La Crosse, WI  54601. \textit{Phone}: (608)406-4068.\newline  \textit{E-mail}: murray.jame@uwlax.edu.}\\Department of Economics\\University of Wisconsin - La Crosse
+}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\abstract{In a recent study, de Araujo and Murray (2010) find empirical evidence that living on campus leads to improved student performance, finding both immediate effects (GPA improves while the student lives on campus) and permanent effects (GPA remains higher even after moving off campus).  Using the same dataset, we extend the analysis to explain why students that live on campus perform better.  We examine two possible channels.  First, we examine whether on-campus students are more likely to take advantage of university provided resources (libraries, tutors, computer technology, university sponsored extracurricular activities, etc) than off-campus students.  Secondly, we examine whether peer influences and interactions, including collaborative studying with friends and/or classmates and engagement in drug and alcohol consumption.  For both these channels we look for evidence of immediate and permanent effects.  We find significant peer-effect channels that explains the positive permanent effect of academic performance from living on campus, and find two channels that explain why students should immediately perform better while they live on campus, but the evidence does not point to utilization of university resources.}\\
+
+\noindent \textit{Keywords}: Student performance, dormitory, cross-section analysis, regression. \\
+\noindent \textit{JEL classification}: C13, C21, I21.
+\end{singlespace}
+\end{titlepage}
+
+\section{Introduction}
+Does living on campus help college students perform better in school?  It is so widely believed that there are academic benefits to living on campus, that many colleges and universities require their students to live on campus during part and sometimes all of their college career.  Most often, colleges and universities require traditional degree seeking students to live on campus during their freshman year.  There are a number of studies published in education and economics literature that addresses this issue, but the results are mixed.  \citee{tsr1993} finds freshman that live on campus are more likely to remain in school, make more progress in their program, and have higher academic performance.  \citee{pascarella1993} also examined freshman students, but focused specifically on measures of critical thinking, reading comprehension, and mathematical skills.  They find freshman students that lived on campus made larger gains in critical thinking skills, but had similar gains to off-campus students when it came to reading comprehension and mathematical skills.
+
+De Araujo and Murray \citeyear{dam2010} examine whether living on campus causes an improvement in academic performance, recognizing the decision to live on campus may endogenously depend on a student's academic ability or ambition.  They find that living on campus does have an immediate positive effect on academic performance and a permanent effect evidenced from higher academic performance for students that lived on campus during any part of their college career.  They show that living on campus causes an increase in performance from half a letter grade to a full letter grade during the semester they live on campus.  They also show that even if a student is not currently living on campus, having ever lived on campus in the past leads to an increase in cumulative GPA of about 0.2 to 0.4.  The purpose of this paper is to identify how impact living on campus impacts study habits and behaviors that may lead to better performance identify if these are immediate changes and/or permanent changes.
+
+Not all studies agree that living on campus improves academic performance.  \citee{delucchi1993} examined a school where most students that technically live off campus nonetheless live in close walking distance of their classes and university resources and found no evidence that living on campus positively influences student performance.
+
+In this paper we use the same data as \citee{dam2010} with the purpose to identify differences in social and academic behaviors between students that live on campus and off campus that may explain why students that live on campus are able to achieve higher levels of academic performance.  This is perhaps the most critical issue to address if a college or university considers requiring its students to live on campus.  \citee{sm1994} conclude that residence life administrators' responsibilities are far greater than simply managing facilities; they have an ability and responsibility to create an environment that is conducive to learning.  \citee{schrager1986} makes similar conclusions with fraternity and sorority houses.  He finds that freshman achievement was highest in communities that emphasized academic achievement and competition and lowest in groups that emphasized traditional social interactions.
+
+We examine two broad channels for which living on campus may lead to better academic performance: utilization of university resources and positive or negative peer effects.  Students that live on campus might easily and productively take advantage of a number of university resources when doing school work.  Libraries and technology labs in close proximity give students a quiet environment to study or the means to acquire information for their school work, or the technology tools to complete their assignments.  \citee{kh2001a} find when students devote more effort to learning communication and information technologies they devote more effort to their studies in general.  They also find that students who benefit most from technology are those who use it in a variety of ways.  On-campus students may be the most likely candidates to fall into this category due to their close proximity to university provided library and technology resources.  In the analysis below, we examine how living on campus influences the total time students spend using these resources.
+
+We also examine whether living on campus influences the frequency with which students meet faculty outside of class.  \citee{pt1991}, \citee{astin1993} and \citee{kh2001} all find that faculty/student interaction of an academic nature improves student performance and student satisfaction.  \citename{kh2001} further find that students' interaction with faculty outside of class positively influences effort put forth by students.
+
+Even non-academic university resources may help improve students performance.  \citee{ts2001} find that increasing institutional spending leads to gains in students' learning as well as their interpersonal skills.  However, they find that allocating more money specifically to academic support does not necessarily improve learning.  Non-academic resources we consider in this paper include university sponsored clubs and organizations (admittedly, these do include some academic clubs, but there are also many that are social in nature and based on common interests and activities) and use of university provided fitness resources.
+
+Besides providing food and shelter, residence hall administrators provide a variety of activities and services to create an environment that causes students to develop close relationships with each other and which encourages students to study and socialize together.  The dynamics of social interactions and the influence of peers are likely to be different in on-campus dormitories than off-campus apartments.
+
+A large literature has examined our second channel, the impacts peers have on students' educational achievement, though most of the literature focuses on peer effects in primary and secondary school (see for example \citee{coleman1966}, \citee{hms1978}, \citee{er1998}, and \citee{hanushek2003}).  Lately some authors are examining post-secondary education, such as \citee{ts2001}, and \citee{zimmerman2003}.  The general finding in this literature is that peer influences do exist, but the extent to which these are positive or negative is somewhat mixed.  \citee{hms1978} find statistical evidence that positive peer effects are greater than negative peer effects.  That is, the positive influence of students who have more academic success is likely to be larger than the negative influence of students who have lesser academic success.  \citee{bettsmorrell1999} find a somewhat contradictory result when following high school students through college.  They find that negative influences of students' high school peers have persistent negative impacts on the students' college academic performance.  \citee{zimmerman2003} finds that the college students who are most influenced by their peers, either positively or negatively, are those whose SAT scores were in the middle of the distribution.
+
+In the analysis below, we do not specifically look at data on students' peers, but we examine how living on-campus influences a handful of activities that are influenced by one's peers including the amount students drink alcohol, the use of other illegal drugs, how much students study with other students in their same classes, and how much students study with their roommates.
+
+\section{Methodology}
+\subsection{Data}
+Survey data was collected in Fall 2008 from undergraduate students at Indiana University Purdue University - Indianapolis (IUPUI) in their sophomore year and above.  There were approximately 30,000 undergraduate students at the time, and about 19,700 students were under the age of 25 (the population of students most likely to consider living on campus).  The university does not require students to live on campus during any part of their college career, and on-campus housing space is extremely limited with space for only 1,107 students.  A survey that takes about 15 minutes to complete was sent to 6,000 students.  The survey collected self-reported data on a variety of issues including students' living situations, study behaviors, social behaviors, their use of university resources, and background characteristics.  Of the students surveyed, 363 completed the questionnaire.  Approximately 15\% of the students who completed the survey had lived on campus during some part of their time at IUPUI, which is consistent with the population of IUPUI students.
+
+We estimate a number of models that predict the peer effects and utilization of university resources channels that may influence academic performance.  The peer effects we examine include the number of hours per week a student spends studying with roommates ($STUDROOM$), the number of hours per week a student spends studying with students in the same classes ($STUDCLASS$), the average amount of alcohol a student drinks each week ($DRINKS$), and whether or not a student engaged in drug use while a student at IUPUI ($DRUGS$).  University resources we examine include the number of hours per week students see tutors ($TUTORS$); the number of hours students spend using libraries, university technology, or studying elsewhere on-campus besides their residence ($STUDCAMPUS$); whether or not students engage in extra-curricular activities ($EXTRACUR$); and the number of hours students spend using fitness resources ($FITNESS$).  Finally, we also examine whether living on campus influences the average number of hours students spend studying each week ($STUDY$).
+
+We include a number of control variables in all the analysis below which might arguably influence student performance and the number of channels we investigate in this paper, including gender ($GENDER$); parent's income ($PINC$); SAT/ACT standardized test percentiles ($TEST$); the total number of semesters the student has been enrolled at IUPUI ($TSEM$); a dummy if the student is over the age of 25, typically indicating the student is a non-traditional student ($NTS$).\footnote{Only a dummy for being over the age of 25 and not actual age is included in the regressions for two reasons.  First, any linear relationship coming from age likely diminishes by the time students reach the age of 25, an age which typically categorizes a person as a non-traditional student.  Secondly, for students under the age of 25, the total number of semesters they have attended IUPUI ($TSEM$) is very highly correlated with age.}
+
+When measuring parents' combined income using a survey administered to students, the students were asked to identify one of several income range categories that described their parents income.  Each category included a range of \$20,000, and the final category was ``More than \$200,000''.  The PINC variable is coded using the  midpoint from each category.  In the event the student selected the final category, the midpoint from the second highest category was entered for PINC, and a dummy variable, $PINC\_d$ was set equal to 1.
+
+\subsection{Model}
+We investigate how living on campus influences academic and social behaviors with the following structural equation,
+\beq \label{eq:channel} y_i = \alpha + \beta DORM\_F08_i + \delta DORM\_PAST_i + X_i'\Omega + \epsilon_i,\eeq
+where $y_i$ is one of the channel variables (possibly a latent variable as discussed below); $DORM\_F08_i$ is a dummy variable equal to 1 if a student lived on campus during the Fall 2008 semester, the same semester that $y_i$ applies to; and $DORM\_PAST_i$ is a dummy variable that is equal to 1 if a student lived on campus during any semester prior to Fall 2008.  This specification allows us to determine what behaviors immediately change due to living on campus and what changes in behaviors are long lasting, even if a student subsequently moves off campus.
+
+A number of the dependent variables we investigate as channels that lead to increased student performance are measured in terms number of hours per week, including how much does a student study, how much does a student study with roommates, how much does a student study with others in his or her same classes, how much time does a student spend using university provided academic resources, and how much does a student use fitness facilities.  This data is both right-censored and left-censored, which means there is a lower boundary (left) and an upper boundary (right) that many of these variables can take.  For example, many students in the sample spend zero hours studying with their roommate - especially true if the student doesn't have any roommates; others spend zero hours using fitness facilities.  These example students are left-censored observations.  Some of the data is also right-censored.  To enforce responses that make sense, the online survey let the students choose the number of hours per week from a drop down box that had a maximum response, ``More than 20 hours per week''.  The students that do spend more than 20 hours with any of these activities are right-censored.
+
+For our censored dependent variables, we run Tobit regressions that suppose the true value $y_i$ above is unobservable, and the actual data we obtain, $y_i^*$, is generated according to,
+\beq \label{eq:tobit} y_i^* = \left\{ \begin{array}{ll} \underline{y},& \mbox{if } y_i \leq \underline{y} \\ y_i & \mbox{if } 0 < y_i < \bar{y} \\ \bar{y}, & \mbox{if } y_i \geq \bar{y} \\ \end{array} \right, \eeq
+where $\underline{y}$ is the smallest value the observable variable $y_i^*$ can take, and $\bar{y}$ is the largest value the observable variable can take.  The Tobit model uses the structure imposed by equations (\ref{eq:channel}) and (\ref{eq:tobit}), with the assumption that $\epsilon_i$ is normally distributed, and estimates the parameters by maximum likelihood.
+
+There are two other limited dependent variables, whether or not the student is involved in extra-curricular activities, and whether or not the student has ever engaged in illegal drug use while a student at IUPUI.  For these we use Probit regressions.  All other channels are estimated with OLS, using heteroskedastic robust standard errors.
+
+\section{Results}
+Table \ref{tb:util} shows regression results dependent variables measuring utilization of university provided resources.  For all regressions, both living on campus during Fall 2008 Semester ($DORM\_F08$) and having ever lived on campus prior to that semester ($DORM\_PAST$) are included as explanatory variables, to determine whether the effect is immediate, long-lasting, or both.  Some of the results have the opposite sign as expected.  The first column indicates that students that currently live on campus actually use university provided fitness resources less, so this is not a channel for which on-campus students are able to perform better.  The second column shows that students that have lived on campus in the past are actually less likely to see tutors for their courses.  The coefficient for currently living on campus is not significantly different from zero, indicating students currently living on campus are no more or less likely to see tutors than students that live off campus.  The coefficient on currently living on campus for the number of hours students spend studying in libraries, computer labs, or elsewhere on campus besides their dorm (fourth column) is negative and statistically significant, indicating students living on campus are actually using these resources less than students that live off campus.  The coefficient on currently living on campus for how much students study is not statistically significant, suggesting that even though students that live on campus spend less time using university provided resources (outside their residence), they do spend a similar amount of their total time studying.  This implies that students who live on campus spend more time studying in their residences than student that live off campus, which is likely an indication that dormitory facilities foster an environment conducive to learning, providing a channel for improved student performance.  At IUPUI, campus housing administrators do a number of activities to create a community of college students that encourages studying, healthy relationships, and positive activities.  Finally, the results in the third column show that students that live on campus, or have ever lived on campus, are more likely to participate in extracurricular activities, suggesting this is another channel for improved student performance for on-campus students both in the short run (while the student is living on campus) and in the long run.
+
+IUPUI is located near the center of downtown Indianapolis, and many students that live off campus are nonetheless in close walking distance of campus, so perhaps it is not surprising that students that live on campus are no more likely to use many of the university's resources than students that live off campus; this is an argument \citee{delucchi1993} suggests in his analysis of his ``college town'' school where nearly all students live in walking distance of campus.  However, living on campus may still lead to increased student performance if the residential environment positively influences students' social relationships in a way that fosters learning.  The results in Table \ref{tb:peer} answer whether students that have lived on campus are less likely to engage in unhealthy habits like drugs and alcohol, and whether they are more likely to involve their peers (roommates and classmates) when studying.  With the exception of drug use, all other coefficients on having lived on campus in the past are statistically significant, and have the expected sign.  Students that have lived on campus consume less alcohol on average, and study more with their classmates and with their roommates.  It is interesting to note that these coefficients are only significant for whether students have lived on campus in the past, they are not significant for whether the student currently lives on campus.  Therefore, these are long-lasting positive effects from living on campus that wouldn't immediately lead to an increase in student performance, but likely have a positive impact in the long-run.
+
+\section{Conclusion}
+We identify channels two channels to explain why students that live on campus perform better both while they are living on campus (immediate effect) and in subsequent semesters even if they move off campus (permanent effect).  Some of the immediate effect channels that we investigate are not statistically significant.  Surprisingly, students that live on campus are not more likely to take advantage or tutors, use campus resources outside their residence, or use on-campus fitness resources.  However, we did successfully identify two channels that leads to immediate improvements in performance.  Students that live on campus spend more time than others studying in their residence, whose environment is designed to be conducive for studying and learning.  Secondly, students that live on campus are more likely to engage in extra-curricular activities, and are more likely to stay engaged in extra-curricular activities in subsequent semesters.  We do find significant evidence for channels relating to students social behaviors that lead to long-run academic benefits of living on campus.  Students that have lived on campus in the past consume less alcohol on average than other students, and spend more time studying along with roommates and students in their same classes.
+
+\newpage
+\begin{singlespace}
+\nocite{*}
+\bibliographystyle{econometrica}
+\bibliography{dorms}
+\end{singlespace}
+\newpage
+
+\begin{table}\textbf{\caption{Impact of Living on Campus on Utilization of Campus Resources} \label{tb:util}}\vspace*{1pc}
+  \centering
+\begin{tabular}{l|ccccc}
+\hline
+\hline
+Dependent Variable: & FITNESS & TUTORS & EXTRACUR & STUDCAMPUS & STUDY  \\
+Model: & Tobit & Robust OLS & Probit & Tobit & Tobit \\ \hline
+DORM\_F08	&	-3.687**	&	0.153	&	0.788*	&	-6.613***	&	-1.702	\\	&	[1.459]	&	[0.136]	&	[0.429]	&	[2.066]	&	[1.55]	\\ [0.4pc]
+DORM\_PAST	&	0.023	&	-0.279**	&	0.937***	&	0.916	&	1.296	\\	&	[1.069]	&	[0.11]	&	[0.268]	&	[1.532]	&	[1.317]	\\ [0.4pc]
+GENDER	&	1.220	&	0.021	&	-0.355	&	3.400**	&	-0.219	\\	&	[0.887]	&	[0.183]	&	[0.215]	&	[1.427]	&	[0.992]	\\ [0.4pc]
+PINC	&	0.010	&	-0.002	&	0.000	&	0.0144	&	0.011	\\	&	[0.01]	&	[0.002]	&	[0.002]	&	[0.015]	&	[0.011]	\\ [0.4pc]
+PINC\_d	&	-0.909	&	0.076	&	-0.416	&	-3.652	&	-0.954	\\	&	[1.736]	&	[0.289]	&	[0.475]	&	[2.338]	&	[2.18]	\\ [0.4pc]
+NTS	&	-1.665	&	-0.062	&	-0.278	&	-4.394***	&	1.041	\\	&	[1.126]	&	[0.298]	&	[0.311]	&	[1.554]	&	[1.557]	\\ [0.4pc]
+TSEM	&	0.136*	&	-0.015	&	-0.016	&	0.188	&	-0.123	\\	&	[0.077]	&	[0.012]	&	[0.024]	&	[0.181]	&	[0.129]	\\ [0.4pc]
+TEST	&	0.008	&	-0.001	&	0.006**	&	-0.0104	&	0.002	\\	&	[0.012]	&	[0.002]	&	[0.003]	&	[0.017]	&	[0.014]	\\
+\hline
+N & 207 & 225 & 232 & 231 & 225 \\
+F-stat & 1.67 & 1.46 & --- & 3.09*** & 1.46  \\
+Wald Stat & --- & --- & 50.45*** & --- & ---  \\
+$R^2$ & 0.0163$^{1}$ & 0.0206 & 0.1663$^{1}$ & 0.0228$^{1}$ & 0.0025$^{1}$ \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{6.6in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. \\
+1. Pseudo R-squared statistics reported for Tobit and Probit models.
+\end{tabular}}
+\end{table}
+
+
+\begin{table}\textbf{\caption{Impact of Living on Campus on Behaviors with Peers} \label{tb:peer}}\vspace*{1pc}
+  \centering
+\begin{tabular}{l|cccc}
+\hline
+\hline
+Dependent Variable: & DRINKS & DRUGS & STUDCLASS & STUDROOM  \\
+Model: & Robust OLS & Probit & Tobit & Tobit \\ \hline
+DORM\_F08	&	-0.186	&	0.200	&	0.051	&	2.077	\\	&	[0.183]	&	[0.389]	&	[1.156]	&	[1.803]	\\ [0.4pc]
+DORM\_PAST	&	-0.341***	&	0.204	&	2.313***	&	2.467**	\\	&	[0.131]	&	[0.312]	&	[0.812]	&	[1.218]	\\ [0.4pc]
+GENDER	&	0.351**	&	0.687***	&	-1.023	&	-1.863	\\	&	[0.161]	&	[0.246]	&	[0.759]	&	[1.172]	\\ [0.4pc]
+PINC	&	0.005***	&	0.004	&	-0.002	&	0.007	\\	&	[0.002]	&	[0.003]	&	[0.009]	&	[0.011]	\\ [0.4pc]
+PINC\_d	&	0.045	&	-0.101	&	0.350	&	-1.901	\\	&	[0.416]	&	[0.526]	&	[1.452]	&	[2.461]	\\ [0.4pc]
+NTS	&	-0.286	&	-1.053***	&	-0.881	&	-2.471	\\	&	[0.211]	&	[0.35]	&	[1.414]	&	[2.399]	\\ [0.4pc]
+TSEM	&	0.026	&	0.068**	&	-0.181*	&	-0.219	\\	&	[0.021]	&	[0.032]	&	[0.101]	&	[0.14]	\\ [0.4pc]
+TEST	&	-0.003	&	-0.004	&	0.006	&	0.024	\\	&	[0.003]	&	[0.004]	&	[0.013]	&	[0.016]	\\ [0.4pc]
+\hline
+N & 226 & 230 & 231 & 230 \\
+F-stat & 4.58*** & --- & 2.37** & 3.50***  \\
+Wald Stat & --- & 26.98*** & --- & --- \\
+$R^2$ & 0.1322 & 0.1140$^1$ & 0.0272$^{1}$ & 0.0601$^{1}$  \\
+\hline
+\hline
+\end{tabular}
+\footnotesize{\begin{tabular}{p{5.7in}}
+Note: * significant at 10\%; ** significant at 5\%; *** significant at 1\%. Standard errors in brackets. \\
+1. Pseudo R-squared statistics reported for Tobit and Probit models.
+\end{tabular}}
+\end{table}
+
+
+
+\end{document}
+
+
